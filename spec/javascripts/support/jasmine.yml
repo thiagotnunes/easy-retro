@@ -11,6 +11,7 @@
 #   - dist/**/*.js
 #
 src_files:
+    - public/javascripts/jquery-1.7.1.js
     - public/javascripts/**/*.js
 
 # stylesheets
