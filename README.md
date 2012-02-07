@@ -1,10 +1,26 @@
+# Easy Retro
+
 Virtual Card Wall aimed for agile retrospectives
 
-### Tech Stack
+## Installing
+
+Using bundler
+
+  $ bundle install
+
+## Running tests
+
+  $ rake spec
+
+## Running application
+
+  $ ruby lib/easy_retro.rb
+
+## Tech Stack
 
 This is the tech stack used for this project
 
-#### Languages
+### Languages
 
 * Ruby
 * Javascript
@@ -12,7 +28,7 @@ This is the tech stack used for this project
 * HTML 5
 * CSS 3
 
-#### Framework
+### Framework
 
 * Sinatra
 * Knockout.js
