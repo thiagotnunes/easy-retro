@@ -4,8 +4,6 @@ Virtual Card Wall aimed for agile retrospectives
 
 ## Installing
 
-Using bundler
-
     $ bundle install
 
 ## Running tests
