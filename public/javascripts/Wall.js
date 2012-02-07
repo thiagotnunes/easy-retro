@@ -1,6 +1,7 @@
 var wall = function() {
   var addPostIt = function() {
-    var newPostIt = $("<div id='post_it_1'></div>").html($("#new_post_it_text").val());
+    var newPostIt = $("<div id='post_it'></div>")
+      .draggable();
     $("#post_its").append(newPostIt);
   };
   var bindButtons = function() {
