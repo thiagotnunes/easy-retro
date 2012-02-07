@@ -31,22 +31,15 @@ namespace 'tests' do
 
 end
 
-task :travis do
-  ["rake jasmine:ci"].each do |cmd|
-    puts "Starting to run #{cmd}..."
-    system("export DISPLAY=:99.0 && bundle exec #{cmd}")
-    raise "#{cmd} failed" unless $?.exitstatus == 0
-  end  
-end
-
 #task :spec => ["tests:unit", "tests:acceptance", "tests:js"]
 task :spec => ["tests:unit", "tests:js"]
-task :default => :travis
+task :default => :spec
 
 task :require_jasmine do
   begin
     require 'jasmine'
     load 'jasmine/tasks/jasmine.rake'
+    system("export DISPLAY=:99.0")
   rescue LoadError
     task :jasmine do
       abort "Jasmine is not available. In order to run jasmine, you must: (sudo) gem install jasmine"
