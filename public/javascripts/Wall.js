@@ -1,8 +1,9 @@
 var wall = function() {
   var addPostIt = function() {
-    var newPostIt = $("<div id='post_it'></div>")
-      .addClass("post_it well")
-      .draggable();
+    var newPostIt = $("#base_post_it").clone()
+      .attr("id", "new_post_it")
+      .draggable({handle: ".header"})
+      .show();
     $("#board").append(newPostIt);
   };
   var bindButtons = function() {

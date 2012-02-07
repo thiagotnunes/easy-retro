@@ -1,9 +1,27 @@
 .post_it {
   width: 200px;
   height: 200px;
-  cursor: move;
+}
+
+.header {
+  height: 20px;
+  width: 200px;
+}
+
+.body {
+  height: 160px;
+  width: 180px;
+  margin: 10px;
 }
 
 .well {
+  background-color: red;
+}
+.well .body {
   background-color: green;
+}
+
+.well .header{
+  background-color: blue;
+  cursor: move;
 }
