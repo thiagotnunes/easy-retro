@@ -31,9 +31,17 @@ namespace 'tests' do
 
 end
 
+task :travis do
+  ["rake jasmine:ci"].each do |cmd|
+    puts "Starting to run #{cmd}..."
+    system("export DISPLAY=:99.0 && bundle exec #{cmd}")
+    raise "#{cmd} failed" unless $?.exitstatus == 0
+  end  
+end
+
 #task :spec => ["tests:unit", "tests:acceptance", "tests:js"]
 task :spec => ["tests:unit", "tests:js"]
-task :default => :spec
+task :default => :travis
 
 task :require_jasmine do
   begin
