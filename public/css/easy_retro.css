@@ -19,6 +19,7 @@
 }
 .well .body {
   background-color: green;
+  overflow: auto;
 }
 
 .well .header{
