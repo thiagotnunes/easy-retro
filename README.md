@@ -6,15 +6,15 @@ Virtual Card Wall aimed for agile retrospectives
 
 Using bundler
 
-  $ bundle install
+    $ bundle install
 
 ## Running tests
 
-  $ rake spec
+    $ rake spec
 
 ## Running application
 
-  $ ruby lib/easy_retro.rb
+    $ ruby lib/easy_retro.rb
 
 ## Tech Stack
 
