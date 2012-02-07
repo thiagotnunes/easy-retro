@@ -1,0 +1,9 @@
+.post_it {
+  width: 200px;
+  height: 200px;
+  cursor: move;
+}
+
+.well {
+  background-color: green;
+}

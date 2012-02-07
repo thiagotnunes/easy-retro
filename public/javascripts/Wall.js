@@ -1,11 +1,12 @@
 var wall = function() {
   var addPostIt = function() {
     var newPostIt = $("<div id='post_it'></div>")
+      .addClass("post_it well")
       .draggable();
-    $("#post_its").append(newPostIt);
+    $("#board").append(newPostIt);
   };
   var bindButtons = function() {
-    $("#add_post_it").click(addPostIt);
+    $("#add_well").click(addPostIt);
   };
   return {
     bindButtons: bindButtons
