@@ -1,6 +1,6 @@
 #board {
-  width: 100%;
-  height: 100%;
+  width     : 100%;
+  height    : 100%;
 }
 
 .post_it {
@@ -9,22 +9,35 @@
   border: 5px solid lightblue;   
   border-radius: 15px;
   box-shadow: 10px 10px 5px #888;
+  width   : 200px;
+  height  : 200px;
+}
+
+.new {
+  position  : absolute;
+  top       : 50px;
+  left      : 10px;
+}
+
+.hidden {
+  display : none;
 }
 
 .header {
-  height: 20px;
-  width: 200px;
+  height  : 20px;
+  width   : 200px;
 }
 
 .body {
-  height: 160px;
-  width: 180px;
-  margin: 10px;
+  height  : 160px;
+  width   : 180px;
+  margin  : 10px;
 }
 
 .well {
   background-color: white;
 }
+
 .well .body {
   background-color: white;
   overflow: auto;

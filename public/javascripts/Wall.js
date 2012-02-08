@@ -1,15 +1,12 @@
 var wall = function() {
   var addPostIt = function() {
     var newPostIt = $("#base_post_it").clone()
-      .attr("id", "new_post_it")
+      .attr("id", "post_it")
+      .removeClass("hidden")
+      .addClass("new")
       .draggable({
         containment: "#board", 
         handle: ".header",
-      })
-      .css({
-        position: "absolute",
-        top: "50px",
-        left: "10px"
       })
       .show();
     $("#board").append(newPostIt);
