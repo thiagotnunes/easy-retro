@@ -1,4 +1,10 @@
-var wall = function() {
+var board = function() {
+
+  var client = new Faye.Client("/faye");
+  client.subscribe('/board', function(message) {
+    wellPostIt();
+  });
+
   var createPostIt = function(type) {
     var postIt = $("#base_post_it").clone()
           .attr("id", "post_it")
@@ -8,18 +14,18 @@ var wall = function() {
           .show();
 
     return postIt;
-  }
+  };
 
   var appendPostItToBoard = function(postIt) {
     $("#board").append(postIt);
-  }
+  };
 
   var makePostItDraggable = function(postIt){
     postIt.draggable({
       containment: "#board", 
       handle: ".header",
     });
-  }
+  };
 
   var wellPostIt = function() {
     var postIt = createPostIt("well");
@@ -39,8 +45,12 @@ var wall = function() {
     makePostItDraggable(postIt);
   };
 
+  var publishPostIt = function() {
+    client.publish('/board', { text: ''});
+  };
+
   var bindButtons = function() {
-    $("#add_well").click(wellPostIt);
+    $("#add_well").click(publishPostIt);
     $("#add_not_so_well").click(notSoWellPostIt);
     $("#add_action_item").click(actionItemPostIt);
   };
@@ -49,9 +59,3 @@ var wall = function() {
     bindButtons: bindButtons
   }
 };
-
-$(document).ready(function() {
-  var theWall = wall();
-  theWall.bindButtons();
-});
-

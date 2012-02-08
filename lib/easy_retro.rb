@@ -1,11 +1,13 @@
 require 'sinatra'
 
-get '/' do
-    return File.open("public/index.html")
+class EasyRetroApp < Sinatra::Base
+
+  get '/' do
+      return File.open("public/index.html")
+  end
+
+  get '/*' do |file|
+      return File.open('public/' + file)
+  end
+
 end
-
-get '/*' do |file|
-    return File.open('public/' + file)
-end
-
-

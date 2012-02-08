@@ -15,5 +15,5 @@ Virtual Card Wall aimed for agile retrospectives
 
 ## Running application
 
-    $ ruby lib/easy_retro.rb
+    $ thin -R config.ru start
 

@@ -1,6 +1,7 @@
 body {
   font: 12px "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
-  background: #f2f2f2 url("../images/background.jpg") top center; }
+  background: #f2f2f2 url("../images/whiteboard.png") top center; 
+}
 
 #board {
   width: 100%;

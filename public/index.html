@@ -6,14 +6,21 @@
     <script src="javascripts/jquery.ui.widget.js"></script>
     <script src="javascripts/jquery.ui.mouse.js"></script>
     <script src="javascripts/jquery.ui.draggable.js"></script>
-    <script src="javascripts/Wall.js"></script>
+    <script src="faye.js"></script>
+    <script src="javascripts/wall.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
+          var retroBoard = board();
+          retroBoard.bindButtons();
+        });
+    </script>
   </head>
   <body>
     <input type="button" id="add_well" class="add well" value="+" />
     <input type="button" id="add_not_so_well" class="add not_so_well" value="+" />
     <input type="button" id="add_action_item" class="add action_item" value="+" />
     <div id="board">
-      <div id="base_post_it" class="post_it well hidden" >
+      <div id="base_post_it" class="post_it hidden" >
         <div class="header"></div>
         <div class="content" contenteditable="true"></div>
       </div>
