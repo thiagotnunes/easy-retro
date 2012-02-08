@@ -1,5 +1,10 @@
 $post_it_side: 200px;
 
+@font-face {
+  font-family: "GTramontina";
+  src: url("../fonts/GTramontina.ttf");
+}
+
 @mixin border-radius-of($border) {
   -webkit-border-radius: $border;
   -moz-border-radius: $border;
@@ -38,7 +43,7 @@ $post_it_side: 200px;
 
 body {
   font: 12px "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
-  background: #F2F2F2 url("../images/background.jpg") top center;
+  background: #F2F2F2 url("../images/whiteboard.png") top center;
 }
 
 #board {
@@ -62,6 +67,8 @@ body {
   margin: 10px 10px 5px 5px;
   overflow: hidden;
   @include create-box-shadow;
+  font-family: "GTramontina";
+  font-size: 30px;
 
   .header {
     height: 20px;
@@ -77,6 +84,7 @@ body {
     margin-left: 5px;
     padding: 5px;
     overflow: auto;
+    outline: none;
   }
 }
 
