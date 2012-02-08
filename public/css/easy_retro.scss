@@ -1,6 +1,4 @@
 $post_it_side: 200px;
-$well_post_it_color: white;
-$action_item_color: rgba(164, 234, 174, 0.9);
 
 @mixin border-radius-of($border) {
   -webkit-border-radius: $border;
@@ -22,13 +20,13 @@ $action_item_color: rgba(164, 234, 174, 0.9);
 }
 
 @mixin post-it-color($r, $g, $b) {
-  background-color: rgba($r, $g, $b, 0.6);
+  background-color: rgba($r, $g, $b, 0.4);
 
   .header {
-    background-color: rgba($r, $g, $b, 0.8);
+    background-color: rgba($r, $g, $b, 0.5);
     border-bottom: 2px solid rgba($r, $g, $b, 0.9);
     &:hover {
-      background-color: rgba($r, $g, $b, 0.5);
+      background-color: rgba($r, $g, $b, 1);
     }
   }
 }
@@ -46,6 +44,16 @@ body {
 #board {
   width     : 100%;
   height    : 100%;
+}
+
+.add {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  color: #666;
+  border-style: none;
+  margin-left: 8px;
+  @include create-box-shadow;
 }
 
 .post_it {

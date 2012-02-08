@@ -6,6 +6,18 @@ body {
   width: 100%;
   height: 100%; }
 
+.add {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  color: #666;
+  border-style: none;
+  margin-left: 8px;
+  -webkit-box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5);
+  -mox-box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5);
+  -o-box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5);
+  box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5); }
+
 .post_it {
   width: 200px;
   height: 200px;
@@ -29,28 +41,28 @@ body {
     overflow: auto; }
 
 .well {
-  background-color: rgba(164, 234, 174, 0.6); }
+  background-color: rgba(164, 234, 174, 0.4); }
   .well .header {
-    background-color: rgba(164, 234, 174, 0.8);
+    background-color: rgba(164, 234, 174, 0.5);
     border-bottom: 2px solid rgba(164, 234, 174, 0.9); }
     .well .header:hover {
-      background-color: rgba(164, 234, 174, 0.5); }
+      background-color: #a4eaae; }
 
 .not_so_well {
-  background-color: rgba(246, 250, 175, 0.6); }
+  background-color: rgba(246, 250, 175, 0.4); }
   .not_so_well .header {
-    background-color: rgba(246, 250, 175, 0.8);
+    background-color: rgba(246, 250, 175, 0.5);
     border-bottom: 2px solid rgba(246, 250, 175, 0.9); }
     .not_so_well .header:hover {
-      background-color: rgba(246, 250, 175, 0.5); }
+      background-color: #f6faaf; }
 
 .action_item {
-  background-color: rgba(175, 224, 250, 0.6); }
+  background-color: rgba(175, 224, 250, 0.4); }
   .action_item .header {
-    background-color: rgba(175, 224, 250, 0.8);
+    background-color: rgba(175, 224, 250, 0.5);
     border-bottom: 2px solid rgba(175, 224, 250, 0.9); }
     .action_item .header:hover {
-      background-color: rgba(175, 224, 250, 0.5); }
+      background-color: #afe0fa; }
 
 .new {
   position: absolute;
