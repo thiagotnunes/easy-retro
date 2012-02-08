@@ -4,12 +4,13 @@ var wall = function() {
       .attr("id", "post_it")
       .removeClass("hidden")
       .addClass("new")
-      .draggable({
-        containment: "#board", 
-        handle: ".header",
-      })
       .show();
     $("#board").append(newPostIt);
+    newPostIt.draggable({
+        containment: "#board", 
+        handle: ".header",
+      });
+
   };
   var bindButtons = function() {
     $("#add_well").click(addPostIt);
