@@ -1,0 +1,94 @@
+$post_it_side: 200px;
+$well_post_it_color: white;
+$action_item_color: rgba(164, 234, 174, 0.9);
+
+@mixin border-radius-of($border) {
+  -webkit-border-radius: $border;
+  -moz-border-radius: $border;
+  border-radius: $border;
+}
+
+@mixin no-box-shadow {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+@mixin create-box-shadow {
+  -webkit-box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5);
+  -mox-box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5);
+  -o-box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5);
+  box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5);
+}
+
+@mixin post-it-color($r, $g, $b) {
+  background-color: rgba($r, $g, $b, 0.6);
+
+  .header {
+    background-color: rgba($r, $g, $b, 0.8);
+    border-bottom: 2px solid rgba($r, $g, $b, 0.9);
+    &:hover {
+      background-color: rgba($r, $g, $b, 0.5);
+    }
+  }
+}
+
+@mixin color-text($size, $color) {
+  font-size: $size;
+  color: $color;
+}
+
+body {
+  font: 12px "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
+  background: #F2F2F2 url("../images/background.jpg") top center;
+}
+
+#board {
+  width     : 100%;
+  height    : 100%;
+}
+
+.post_it {
+  width         : $post_it_side;
+  height        : $post_it_side;
+  margin: 10px 10px 5px 5px;
+  overflow: hidden;
+  @include create-box-shadow;
+
+  .header {
+    height: 20px;
+    width: $post_it_side;
+    font-weight: bold;
+  }
+
+  .content {
+    height: 160px;
+    width: 180px;
+    margin-top: 5px;
+    margin-left: 5px;
+    padding: 5px;
+    overflow: auto;
+  }
+}
+
+.well {
+  @include post-it-color(164, 234, 174);
+}
+
+.not_so_well {
+  @include post-it-color(246, 250, 175);
+}
+
+.action_item {
+  @include post-it-color(175, 224, 250);
+}
+
+.new {
+  position  : absolute;
+  top       : 50px;
+  left      : 10px;
+}
+
+.hidden {
+  display : none;
+}

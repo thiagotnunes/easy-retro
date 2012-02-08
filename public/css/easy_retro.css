@@ -1,50 +1,60 @@
+body {
+  font: 12px "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
+  background: #f2f2f2 url("../images/background.jpg") top center; }
+
 #board {
-  width     : 100%;
-  height    : 100%;
-}
+  width: 100%;
+  height: 100%; }
 
 .post_it {
-  width         : 200px;
-  height        : 200px;
-  border        : 5px solid lightblue;   
-  border-radius : 15px;
-  box-shadow    : 10px 10px 5px #888;
-  width         : 200px;
-  height        : 200px;
-}
-
-.new {
-  position  : absolute;
-  top       : 50px;
-  left      : 10px;
-}
-
-.hidden {
-  display : none;
-}
-
-.header {
-  height  : 20px;
-  width   : 200px;
-}
-
-.body {
-  height  : 160px;
-  width   : 180px;
-  margin  : 10px;
-}
+  width: 200px;
+  height: 200px;
+  margin: 10px 10px 5px 5px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5);
+  -mox-box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5);
+  -o-box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5);
+  box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5); }
+  .post_it .header {
+    height: 20px;
+    width: 200px;
+    font-weight: bold; }
+  .post_it .content {
+    height: 160px;
+    width: 180px;
+    margin-top: 5px;
+    margin-left: 5px;
+    padding: 5px;
+    overflow: auto; }
 
 .well {
-  background-color  : white;
-}
+  background-color: rgba(164, 234, 174, 0.6); }
+  .well .header {
+    background-color: rgba(164, 234, 174, 0.8);
+    border-bottom: 2px solid rgba(164, 234, 174, 0.9); }
+    .well .header:hover {
+      background-color: rgba(164, 234, 174, 0.5); }
 
-.well .body {
-  background-color  : white;
-  overflow: auto;
-}
+.not_so_well {
+  background-color: rgba(246, 250, 175, 0.6); }
+  .not_so_well .header {
+    background-color: rgba(246, 250, 175, 0.8);
+    border-bottom: 2px solid rgba(246, 250, 175, 0.9); }
+    .not_so_well .header:hover {
+      background-color: rgba(246, 250, 175, 0.5); }
 
-.well .header{
-  background-color  : darkBlue;
-  cursor            : move;
-  border-radius     : 10px;
-}
+.action_item {
+  background-color: rgba(175, 224, 250, 0.6); }
+  .action_item .header {
+    background-color: rgba(175, 224, 250, 0.8);
+    border-bottom: 2px solid rgba(175, 224, 250, 0.9); }
+    .action_item .header:hover {
+      background-color: rgba(175, 224, 250, 0.5); }
+
+.new {
+  position: absolute;
+  top: 50px;
+  left: 10px; }
+
+.hidden {
+  display: none; }

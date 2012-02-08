@@ -2,6 +2,7 @@ source "http://rubygems.org"
 
 gem 'sinatra'
 gem 'rake'
+gem 'sass'
 
 group :test do 
   gem 'rspec'
