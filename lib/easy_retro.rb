@@ -1,5 +1,11 @@
 require 'sinatra'
 
 get '/' do
-  'Welcome to easy retro'
+    return File.open("public/index.html")
 end
+
+get '/*' do |file|
+    return File.open('public/' + file)
+end
+
+
