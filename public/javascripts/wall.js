@@ -12,6 +12,7 @@ var wall = function() {
       });
 
   };
+
   var bindButtons = function() {
     $("#add_well").click(addPostIt);
   };
@@ -24,3 +25,4 @@ $(document).ready(function() {
   var theWall = wall();
   theWall.bindButtons();
 });
+
