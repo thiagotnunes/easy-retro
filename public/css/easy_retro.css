@@ -18,7 +18,8 @@ body {
   .post_it .header {
     height: 20px;
     width: 200px;
-    font-weight: bold; }
+    font-weight: bold;
+    cursor: move; }
   .post_it .content {
     height: 160px;
     width: 180px;
