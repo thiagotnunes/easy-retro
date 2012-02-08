@@ -12,6 +12,5 @@ describe 'Easy retro base app' do
   it "should say a welcome message when accessing home page" do
     get '/'
     last_response.should be_ok
-    last_response.body.should == 'Welcome to easy retro'
   end
 end
