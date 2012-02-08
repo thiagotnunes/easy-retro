@@ -35,6 +35,10 @@ end
 task :spec => ["tests:unit", "tests:js"]
 task :default => :spec
 
+task :start do
+  system("thin -R config.ru start")
+end
+
 task :require_jasmine do
   begin
     require 'jasmine'

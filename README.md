@@ -15,5 +15,5 @@ Virtual Card Wall aimed for agile retrospectives
 
 ## Running application
 
-    $ thin -R config.ru start
+    $ bundle exec rake start
 
