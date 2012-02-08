@@ -3,6 +3,7 @@ source "http://rubygems.org"
 gem 'sinatra'
 gem 'rake'
 gem 'sass'
+gem 'faye'
 
 group :test do 
   gem 'rspec'
