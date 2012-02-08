@@ -6,6 +6,9 @@
 .post_it {
   width: 200px;
   height: 200px;
+  border: 5px solid lightblue;   
+  border-radius: 15px;
+  box-shadow: 10px 10px 5px #888;
 }
 
 .header {
@@ -20,14 +23,15 @@
 }
 
 .well {
-  background-color: red;
+  background-color: white;
 }
 .well .body {
-  background-color: green;
+  background-color: white;
   overflow: auto;
 }
 
 .well .header{
-  background-color: blue;
+  background-color: darkBlue;
   cursor: move;
+  border-radius: 10px;
 }
