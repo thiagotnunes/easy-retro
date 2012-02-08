@@ -1,7 +1,7 @@
 require 'sinatra'
 
 get '/' do
-    return File.open("public/wall.html")
+    return File.open("public/index.html")
 end
 
 get '/*' do |file|
