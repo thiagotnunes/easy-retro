@@ -1,45 +1,31 @@
-describe("wall", function() {
+describe("retro", function() {
 
-  var retroUi;
+  var sender;
   var retroBoard;
 
   beforeEach(function() {
-    retroUi = { update: jasmine.createSpy() };
-    retroBoard = retro(retroUi);
+    sender = { send: jasmine.createSpy() };
+    retroBoard = retro(sender);
   });
 
   it("should create a post it with id", function() {
     var jpostIt = {text: 'some text'};
-    var id = retroBoard.create(jpostIt);
-    var postIt = retroBoard.getPostIt(id);
+    var postIt = retroBoard.create(jpostIt);
 
-    expect(postIt.id).toEqual(id);
+    expect(postIt.id).toBeDefined();
     expect(postIt.text).toEqual('some text');
-    expect(retroUi.update).toHaveBeenCalledWith(postIt);
   });
 
   it("should create two post its with different ids", function() {
-    var id1 = retroBoard.create({});
-    var id2 = retroBoard.create({});
+    var id1 = retroBoard.create({}).id;
+    var id2 = retroBoard.create({}).id;
 
     expect(id1).not.toEqual(id2);
   });
 
-  it("should update a post it", function() {
-    var id = retroBoard.create({});
-    var postIt = {id: id, text: 'updated post it'};
-    retroBoard.update(postIt);
+  it("should send the newly created post it to others", function() {
+    var postIt = retroBoard.create({group: 'well'});
 
-    expect(retroBoard.getPostIt(id).text).toEqual('updated post it');
+    expect(sender.send).toHaveBeenCalledWith(postIt);
   });
-
-  it("should update a post it calling ui adapter", function()  {
-    var id = retroBoard.create({});
-    var postIt = {id: id, text: 'updated post it'};
-    retroBoard.update(postIt);
-
-    expect(retroBoard.getPostIt(id).text).toEqual('updated post it');
-    expect(retroUi.update).toHaveBeenCalledWith(postIt);
-  });
-
 });

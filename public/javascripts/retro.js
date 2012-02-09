@@ -1,22 +1,9 @@
-var retro = function(uiAdapter) {
-  var postIts = []; 
+var retro = function(sender) {
 
   var create = function(postIt) {
-    var id = generateId();
-    
-    postIt.id = id;
-    update(postIt);
-
-    return id;
-  };
-
-  var update = function(postIt) {
-    postIts[postIt.id] = postIt;
-    uiAdapter.update(postIt);
-  };
-
-  var getPostIt = function(id) {
-    return postIts[id];
+    postIt.id = generateId();
+    sender.send(postIt);
+    return postIt;
   };
 
   var generateId = function() {
@@ -24,8 +11,6 @@ var retro = function(uiAdapter) {
   };
 
   return {
-    getPostIt: getPostIt,
-    create: create,
-    update: update
+    create: create
   };
 };

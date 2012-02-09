@@ -1,12 +1,8 @@
 var board = function() {
 
-  var client = new Faye.Client("/faye");
-  client.subscribe('/board', function(message) {
-    wellPostIt();
-  });
-
   var adapter = uiAdapter();
-  var easyRetro = retro(adapter);
+  var sender = postItSender(adapter);
+  var easyRetro = retro(sender);
 
   var wellPostIt = function() {
     easyRetro.create({group: "well"});
@@ -20,12 +16,8 @@ var board = function() {
     easyRetro.create({group: "action_item"});
   };
 
-  var publishPostIt = function() {
-    client.publish('/board', { text: ''});
-  };
-
   var bindButtons = function() {
-    $("#add_well").click(publishPostIt);
+    $("#add_well").click(wellPostIt);
     $("#add_not_so_well").click(notSoWellPostIt);
     $("#add_action_item").click(actionItemPostIt);
   };
