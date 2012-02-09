@@ -3,6 +3,7 @@ var retro = function(sender) {
   var create = function(postIt) {
     postIt.id = generateId();
     sender.send(postIt);
+
     return postIt;
   };
 
