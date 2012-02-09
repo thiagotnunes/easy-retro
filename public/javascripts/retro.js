@@ -1,18 +1,21 @@
-var retro = function(uiCallback) {
+var retro = function(uiAdapter) {
   var postIts = []; 
 
   var create = function(postIt) {
     var id = generateId();
     postIt.id = id;
     postIts[id] = postIt;
+
     return id;
   };
 
   var update = function(postIt) {
     postIts[postIt.id] = postIt;
-    if (uiCallback) {
-      uiCallback(postIt);
-    }
+    uiAdapter.update(postIt);
+  };
+
+  var getPostIt = function(id) {
+    return postIts[id];
   };
 
   var generateId = function() {
@@ -20,8 +23,8 @@ var retro = function(uiCallback) {
   };
 
   return {
-    postIts: postIts,
+    getPostIt: getPostIt,
     create: create,
     update: update
-  }
+  };
 };
