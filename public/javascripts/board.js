@@ -5,44 +5,19 @@ var board = function() {
     wellPostIt();
   });
 
-  var createPostIt = function(type) {
-    var postIt = $("#base_post_it").clone()
-          .attr("id", "post_it")
-          .removeClass("hidden")
-          .addClass("new")
-          .addClass(type)
-          .show();
-
-    return postIt;
-  };
-
-  var appendPostItToBoard = function(postIt) {
-    $("#board").append(postIt);
-  };
-
-  var makePostItDraggable = function(postIt){
-    postIt.draggable({
-      containment: "#board", 
-      handle: ".header",
-    });
-  };
+  var adapter = uiAdapter();
+  var easyRetro = retro(adapter);
 
   var wellPostIt = function() {
-    var postIt = createPostIt("well");
-    appendPostItToBoard(postIt);
-    makePostItDraggable(postIt);
+    easyRetro.create({group: "well"});
   };
 
   var notSoWellPostIt = function() {
-    var postIt = createPostIt("not_so_well");
-    appendPostItToBoard(postIt);
-    makePostItDraggable(postIt);
+    easyRetro.create({group: "not_so_well"});
   };
 
   var actionItemPostIt = function() {
-    var postIt = createPostIt("action_item");
-    appendPostItToBoard(postIt);
-    makePostItDraggable(postIt);
+    easyRetro.create({group: "action_item"});
   };
 
   var publishPostIt = function() {

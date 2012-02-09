@@ -15,6 +15,7 @@ describe("wall", function() {
 
     expect(postIt.id).toEqual(id);
     expect(postIt.text).toEqual('some text');
+    expect(retroUi.update).toHaveBeenCalledWith(postIt);
   });
 
   it("should create two post its with different ids", function() {
@@ -28,6 +29,7 @@ describe("wall", function() {
     var id = retroBoard.create({});
     var postIt = {id: id, text: 'updated post it'};
     retroBoard.update(postIt);
+
     expect(retroBoard.getPostIt(id).text).toEqual('updated post it');
   });
 
@@ -35,6 +37,7 @@ describe("wall", function() {
     var id = retroBoard.create({});
     var postIt = {id: id, text: 'updated post it'};
     retroBoard.update(postIt);
+
     expect(retroBoard.getPostIt(id).text).toEqual('updated post it');
     expect(retroUi.update).toHaveBeenCalledWith(postIt);
   });

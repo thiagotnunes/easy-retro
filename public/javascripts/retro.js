@@ -3,8 +3,9 @@ var retro = function(uiAdapter) {
 
   var create = function(postIt) {
     var id = generateId();
+    
     postIt.id = id;
-    postIts[id] = postIt;
+    update(postIt);
 
     return id;
   };
@@ -19,7 +20,7 @@ var retro = function(uiAdapter) {
   };
 
   var generateId = function() {
-    return Date.now() + Math.floor(Math.random()*50);
+    return Date.now() + '_' + Math.floor(Math.random()*50);
   };
 
   return {
