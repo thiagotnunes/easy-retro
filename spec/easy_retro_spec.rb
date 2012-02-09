@@ -6,7 +6,7 @@ describe 'Easy retro base app' do
   include Rack::Test::Methods
 
   def app
-    Sinatra::Application
+    EasyRetroApp
   end
 
   it "should say a welcome message when accessing home page" do
