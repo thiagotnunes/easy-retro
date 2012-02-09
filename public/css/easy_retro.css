@@ -46,36 +46,40 @@ body {
     outline: none; }
 
 .well {
-  background-color: rgba(164, 234, 174, 0.4); }
+  background-color: #a4eaae;
+  color: #527557; }
   .well .header {
-    background-color: rgba(164, 234, 174, 0.5);
-    border-bottom: 2px solid rgba(164, 234, 174, 0.9); }
+    background-color: #d1f4d6;
+    border-bottom: 2px solid #c6ffce; }
     .well .header:hover {
-      background-color: #a4eaae; }
+      background-color: rgba(209, 244, 214, 0.5); }
 
 .not_so_well {
-  background-color: rgba(246, 250, 175, 0.4); }
+  background-color: #f6faaf;
+  color: #7b7d57; }
   .not_so_well .header {
-    background-color: rgba(246, 250, 175, 0.5);
-    border-bottom: 2px solid rgba(246, 250, 175, 0.9); }
+    background-color: #fafcd7;
+    border-bottom: 2px solid #fdffd4; }
     .not_so_well .header:hover {
-      background-color: #f6faaf; }
+      background-color: rgba(250, 252, 215, 0.5); }
 
 .action_item {
-  background-color: rgba(175, 224, 250, 0.4); }
+  background-color: #afe0fa;
+  color: #57707d; }
   .action_item .header {
-    background-color: rgba(175, 224, 250, 0.5);
-    border-bottom: 2px solid rgba(175, 224, 250, 0.9); }
+    background-color: #d7effc;
+    border-bottom: 2px solid #d4f0ff; }
     .action_item .header:hover {
-      background-color: #afe0fa; }
+      background-color: rgba(215, 239, 252, 0.5); }
 
 .bad {
-  background-color: rgba(255, 95, 95, 0.4); }
+  background-color: #ff5f5f;
+  color: #7f2f2f; }
   .bad .header {
-    background-color: rgba(255, 95, 95, 0.5);
-    border-bottom: 2px solid rgba(255, 95, 95, 0.9); }
+    background-color: #ffafaf;
+    border-bottom: 2px solid #ffafaf; }
     .bad .header:hover {
-      background-color: #ff5f5f; }
+      background-color: rgba(255, 175, 175, 0.5); }
 
 .new {
   position: absolute;

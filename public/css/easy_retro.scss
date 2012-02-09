@@ -3,6 +3,9 @@ $well_color: #A4EAAE;
 $not_so_well_color: #F6FAAF;
 $action_item_color: #AFE0FA;
 $bad_color: #FF5F5F;
+$glue_effect_color:#FFF;
+$pen_color: #000;
+$post_it_font_size: 12px;
 
 @font-face {
   font-family: "GTramontina";
@@ -29,13 +32,15 @@ $bad_color: #FF5F5F;
 }
 
 @mixin post-it-color($color) {
-  background-color: rgba($color, 0.4);
+  background-color: rgba($color, 1);
+  color: mix($color, $pen_color);
 
   .header {
-    background-color: rgba($color, 0.5);
-    border-bottom: 2px solid rgba($color, 0.9);
+    $glue: mix($color, $glue_effect_color);
+    background-color: $glue;
+    border-bottom: 2px solid saturate($glue, 80%);
     &:hover {
-      background-color: rgba($color, 1);
+      background-color: rgba($glue, 0.5);
     }
   }
 }
