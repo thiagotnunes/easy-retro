@@ -1,4 +1,8 @@
 $post_it_side: 200px;
+$well_color: #A4EAAE;
+$not_so_well_color: #F6FAAF;
+$action_item_color: #AFE0FA;
+$bad_color: #FF5F5F;
 
 @font-face {
   font-family: "GTramontina";
@@ -24,14 +28,14 @@ $post_it_side: 200px;
   box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5);
 }
 
-@mixin post-it-color($r, $g, $b) {
-  background-color: rgba($r, $g, $b, 0.4);
+@mixin post-it-color($color) {
+  background-color: rgba($color, 0.4);
 
   .header {
-    background-color: rgba($r, $g, $b, 0.5);
-    border-bottom: 2px solid rgba($r, $g, $b, 0.9);
+    background-color: rgba($color, 0.5);
+    border-bottom: 2px solid rgba($color, 0.9);
     &:hover {
-      background-color: rgba($r, $g, $b, 1);
+      background-color: rgba($color, 1);
     }
   }
 }
@@ -67,8 +71,6 @@ body {
   margin: 10px 10px 5px 5px;
   overflow: hidden;
   @include create-box-shadow;
-  font-family: "GTramontina";
-  font-size: 30px;
 
   .header {
     height: 20px;
@@ -89,21 +91,40 @@ body {
 }
 
 .well {
-  @include post-it-color(164, 234, 174);
+  @include post-it-color($well_color);
 }
 
 .not_so_well {
-  @include post-it-color(246, 250, 175);
+  @include post-it-color($not_so_well_color);
 }
 
 .action_item {
-  @include post-it-color(175, 224, 250);
+  @include post-it-color($action_item_color);
+}
+
+.bad {
+  @include post-it-color($bad_color);
 }
 
 .new {
   position  : absolute;
   top       : 50px;
   left      : 10px;
+}
+
+.handwritten {
+  font-family: "GTramontina";
+}
+
+.big {
+  font-size: 30px;
+}
+
+menu {
+  padding: 2px;
+  span {
+    vertical-align: bottom;
+  }
 }
 
 .hidden {

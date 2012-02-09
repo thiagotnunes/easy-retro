@@ -18,11 +18,15 @@
     </script>
   </head>
   <body>
-    <input type="button" id="add_well" class="add well" value="+" />
-    <input type="button" id="add_not_so_well" class="add not_so_well" value="+" />
-    <input type="button" id="add_action_item" class="add action_item" value="+" />
+    <menu>
+      <span class="handwritten big">Add</span> 
+      <input type="button" id="add_well" class="add well" />
+      <input type="button" id="add_not_so_well" class="add not_so_well" />
+      <input type="button" id="add_bad" class="add bad" />
+      <input type="button" id="add_action_item" class="add action_item" />
+    </menu>
     <div id="board">
-      <div id="base_post_it" class="post_it hidden" >
+      <div id="base_post_it" class="post_it hidden handwritten big" >
         <div class="header"></div>
         <div class="content" contenteditable="true"></div>
       </div>
