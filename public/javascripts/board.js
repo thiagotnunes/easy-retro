@@ -12,6 +12,10 @@ var board = function() {
     easyRetro.create({group: "not_so_well"});
   };
 
+  var badPostIt = function() {
+    easyRetro.create({group: "bad"});
+  };
+
   var actionItemPostIt = function() {
     easyRetro.create({group: "action_item"});
   };
@@ -19,6 +23,7 @@ var board = function() {
   var bindButtons = function() {
     $("#add_well").click(wellPostIt);
     $("#add_not_so_well").click(notSoWellPostIt);
+    $("#add_bad").click(badPostIt);
     $("#add_action_item").click(actionItemPostIt);
   };
 
