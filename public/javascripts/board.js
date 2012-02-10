@@ -1,13 +1,13 @@
 var board = function() {
 
-  var adapter = uiAdapter();
   var sender = postItSender();
+  var adapter = uiAdapter(sender);
   var builder = postItBuilder();
 
   sender.subscribe(adapter.update);
 
   var newPostIt = function(group) {
-    postIt = builder.create({group: group});
+    var postIt = builder.create({group: group});
     sender.send(postIt);
   };
 
