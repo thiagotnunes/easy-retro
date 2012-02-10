@@ -1,6 +1,6 @@
 var uiAdapter = function() {
 
-  var update = function(postIt) {
+  var update = function(postIt, sender) {
     var uiPostIt = getPostIt(postIt);
 
     uiPostIt.children('.content').html(postIt.text);
@@ -16,11 +16,12 @@ var uiAdapter = function() {
   };
 
   var create = function(postIt) {
-    return $("#base_post_it").clone()
+    var element = $("#base_post_it").clone()
         .attr("id", postIt.id)
         .removeClass("hidden")
         .addClass("new")
         .addClass(postIt.group);
+    return element;
   };
 
   var makeDraggable = function(){
@@ -35,7 +36,6 @@ var uiAdapter = function() {
     if (retrievedPostIt.length === 0) {
       retrievedPostIt = create(postIt);
     }
-
     retrievedPostIt.makeDraggable = makeDraggable;
     return retrievedPostIt;
   };

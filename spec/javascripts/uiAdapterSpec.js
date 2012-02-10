@@ -1,10 +1,12 @@
 describe("ui adapter", function() {
 
   var adapter; 
+  var sender;
 
   beforeEach(function() {
-    adapter = uiAdapter();
-    loadFixtures("wall.html");
+    sender = { send: jasmine.createSpy() };
+    adapter = uiAdapter(sender);
+    loadFixtures("board.html");
   });
 
   it("should create a post it", function() {

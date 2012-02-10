@@ -2,12 +2,12 @@ var Faye;
 
 describe("Sender", function() {
   var sender;
-  var adapter;
-  var subscribe = jasmine.createSpy();
+  var updateCallback;
+  var subscribe;
   var publish;
   
   beforeEach(function() { 
-    adapter = { update: jasmine.createSpy() };
+    update = jasmine.createSpy();
     subscribe = jasmine.createSpy();
     publish = jasmine.createSpy();
     Faye = { 
@@ -18,11 +18,13 @@ describe("Sender", function() {
         };
       }
     };
-    sender = postItSender(adapter);
+    sender = postItSender();
   });
 
   it("should subscribe to board channel", function() {
-    expect(subscribe).toHaveBeenCalledWith("/board", adapter.update);
+    sender.subscribe(updateCallback);
+
+    expect(subscribe).toHaveBeenCalledWith("/board", updateCallback);
   });
 
   it("should send a message to the client", function() {
@@ -30,4 +32,5 @@ describe("Sender", function() {
     sender.send(postIt);
     expect(publish).toHaveBeenCalledWith("/board", postIt);
   });
+
 });
