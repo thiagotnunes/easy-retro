@@ -32,15 +32,14 @@ $post_it_font_size: 12px;
 }
 
 @mixin post-it-color($color) {
-  background-color: rgba($color, 1);
+  background-color: rgba($color, 0.95);
   color: mix($color, $pen_color);
 
   .header {
-    $glue: mix($color, $glue_effect_color);
-    background-color: $glue;
-    border-bottom: 2px solid saturate($glue, 80%);
+    background-color: darken($color, 10%);
+    border-bottom: 2px solid rgba($color, 0.5);
     &:hover {
-      background-color: rgba($glue, 0.5);
+      background-color: darken($color, 25%);
     }
   }
 }

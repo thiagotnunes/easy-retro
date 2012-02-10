@@ -46,40 +46,40 @@ body {
     outline: none; }
 
 .well {
-  background-color: #a4eaae;
+  background-color: rgba(164, 234, 174, 0.95);
   color: #527557; }
   .well .header {
-    background-color: #d1f4d6;
-    border-bottom: 2px solid #c6ffce; }
+    background-color: #7be089;
+    border-bottom: 2px solid rgba(164, 234, 174, 0.5); }
     .well .header:hover {
-      background-color: rgba(209, 244, 214, 0.5); }
+      background-color: #3cd252; }
 
 .not_so_well {
-  background-color: #f6faaf;
+  background-color: rgba(246, 250, 175, 0.95);
   color: #7b7d57; }
   .not_so_well .header {
-    background-color: #fafcd7;
-    border-bottom: 2px solid #fdffd4; }
+    background-color: #f1f77f;
+    border-bottom: 2px solid rgba(246, 250, 175, 0.5); }
     .not_so_well .header:hover {
-      background-color: rgba(250, 252, 215, 0.5); }
+      background-color: #e8f237; }
 
 .action_item {
-  background-color: #afe0fa;
+  background-color: rgba(175, 224, 250, 0.95);
   color: #57707d; }
   .action_item .header {
-    background-color: #d7effc;
-    border-bottom: 2px solid #d4f0ff; }
+    background-color: #7fcdf7;
+    border-bottom: 2px solid rgba(175, 224, 250, 0.5); }
     .action_item .header:hover {
-      background-color: rgba(215, 239, 252, 0.5); }
+      background-color: #37b1f2; }
 
 .bad {
-  background-color: #ff5f5f;
+  background-color: rgba(255, 95, 95, 0.95);
   color: #7f2f2f; }
   .bad .header {
-    background-color: #ffafaf;
-    border-bottom: 2px solid #ffafaf; }
+    background-color: #ff2c2c;
+    border-bottom: 2px solid rgba(255, 95, 95, 0.5); }
     .bad .header:hover {
-      background-color: rgba(255, 175, 175, 0.5); }
+      background-color: #df0000; }
 
 .new {
   position: absolute;
