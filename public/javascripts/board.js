@@ -2,12 +2,13 @@ var board = function() {
 
   var adapter = uiAdapter();
   var sender = postItSender();
-  var easyRetro = retro(sender);
+  var builder = postItBuilder();
 
   sender.subscribe(adapter.update);
 
   var newPostIt = function(group) {
-    postIt = easyRetro.create({group: group});
+    postIt = builder.create({group: group});
+    sender.send(postIt);
   };
 
   var bindButtons = function() {

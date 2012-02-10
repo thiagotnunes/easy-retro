@@ -1,9 +1,7 @@
-var retro = function(sender) {
+var postItBuilder = function() {
 
   var create = function(postIt) {
     postIt.id = generateId();
-    sender.send(postIt);
-
     return postIt;
   };
 
