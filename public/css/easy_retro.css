@@ -93,6 +93,7 @@ body {
   font-size: 30px; }
 
 menu {
+  margin: 0;
   padding: 2px; }
   menu span {
     vertical-align: bottom; }
