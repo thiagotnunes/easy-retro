@@ -4,6 +4,9 @@ gem 'sinatra'
 gem 'rake'
 gem 'sass'
 gem 'faye'
+gem 'mongo'
+gem 'mongodb'
+gem 'mongo_mapper'
 
 group :test do 
   gem 'rspec'
