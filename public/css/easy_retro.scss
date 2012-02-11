@@ -152,6 +152,9 @@ menu {
 .icon {
   float: left;
   opacity: 0.3;
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 .vote {
