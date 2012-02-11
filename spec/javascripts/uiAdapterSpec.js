@@ -33,4 +33,14 @@ describe("ui adapter", function() {
     expect(element).toHaveClass('ui-draggable');
   });
 
+//  it("should send movements", function() {
+//    //given I create a post it with id 123
+//    var element = adapter.update({id: 123});
+//    
+//    //when I move the post it to position left 200 top 300
+//    element.offset({left: 200, top: 300});
+//    element.stop();
+//    //then a message should be sent with this position
+//    expect(sender.send).toHaveBeenCalledWith({id: 123, left:200, top: 300});
+//  });
 });
