@@ -1,14 +1,16 @@
 describe("Message Router", function() {
 
   var router;
-  var adapter;
   var validator;
 
   beforeEach(function() {
     adapter = { create: jasmine.createSpy() };
     validator = { validate: jasmine.createSpy() };
+    var routes = {
+      create: adapter.create
+    };
 
-    router = messageRouter(validator, adapter);
+    router = messageRouter(validator, routes);
   });
 
   it("should raise an error when the action has no mapping associated", function() {

@@ -1,8 +1,4 @@
-var messageRouter = function(validator, adapter) {
-
-  var defaultRoutes = {
-    create: adapter.create
-  };
+var messageRouter = function(validator, routes) {
 
   var invalidActionException = function(action) {
     return {
@@ -12,7 +8,7 @@ var messageRouter = function(validator, adapter) {
   };
 
   var hasNoMappingFor = function(action) {
-    return !defaultRoutes[action];
+    return !routes[action];
   };
 
   var route = function(message) {
@@ -23,7 +19,7 @@ var messageRouter = function(validator, adapter) {
     if (hasNoMappingFor(action))
       throw invalidActionException(action);
 
-    defaultRoutes[action](message.postIt);
+    routes[action](message.postIt);
   };
 
   return {
