@@ -3,12 +3,16 @@ var board = function() {
   var sender = postItSender();
   var adapter = uiAdapter(sender);
   var builder = postItBuilder();
+  var router = messageRouter(messageValidator(), {
+    create: adapter.create,
+    update: adapter.update
+  });
 
-  sender.subscribe(adapter.update);
+  sender.subscribe(router.route);
 
   var newPostIt = function(group) {
-    var postIt = builder.create({group: group});
-    sender.send(postIt);
+    var message = { action: "create", postIt: builder.create({ group: group }) };
+    sender.send(message);
   };
 
   var bindButtons = function() {

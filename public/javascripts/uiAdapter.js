@@ -1,27 +1,12 @@
 var uiAdapter = function(sender) {
 
   var update = function(postIt) {
-    var uiPostIt = getPostIt(postIt);
+    var element = getFromPage(postIt);
 
-    uiPostIt.children('.content').html(postIt.text);
-    uiPostIt.offset({left: postIt.left, top: postIt.top});
-    uiPostIt.show();
-    $("#board").append(uiPostIt);
-    uiPostIt.draggable({
-      containment: "#board", 
-      handle: ".header",
-      stop: function() { handleTextChange(postIt);}
-    });
+    element.children('.content').html(postIt.text);
+    element.offset({left: postIt.left, top: postIt.top});
 
-    return uiPostIt;
-  };
-
-  var getPostIt = function(postIt) {
-    var retrievedPostIt = getFromPage(postIt);
-    if (retrievedPostIt.length === 0) {
-      retrievedPostIt = create(postIt);
-    }
-    return retrievedPostIt;
+    return element;
   };
 
   var getFromPage = function(postIt) {
@@ -31,7 +16,19 @@ var uiAdapter = function(sender) {
   var create = function(postIt) {
     var element = toHtml(postIt);
     var content = element.children('.content');
+
     content.blur(function() { handleTextChange(postIt) });
+
+    element.children('.content').html(postIt.text);
+    element.offset({left: postIt.left, top: postIt.top});
+    element.show();
+    $("#board").append(element);
+    element.draggable({
+      containment: "#board", 
+      handle: ".header",
+      stop: function() { handleTextChange(postIt);}
+    });
+
     return element;
   };
 
@@ -51,10 +48,12 @@ var uiAdapter = function(sender) {
     var offset = element.offset();
     postIt.left = offset.left;
     postIt.top = offset.top;
-    sender.send(postIt);
+
+    sender.send({action: "update", postIt: postIt});
   };
 
   return {
+    create: create,
     update: update
   };
 };
