@@ -4,11 +4,13 @@ var uiAdapter = function(sender) {
     var uiPostIt = getPostIt(postIt);
 
     uiPostIt.children('.content').html(postIt.text);
+    uiPostIt.offset({left: postIt.left, top: postIt.top});
     uiPostIt.show();
     $("#board").append(uiPostIt);
     uiPostIt.draggable({
       containment: "#board", 
       handle: ".header",
+      stop: function() { handleTextChange(postIt);}
     });
 
     return uiPostIt;
@@ -46,6 +48,9 @@ var uiAdapter = function(sender) {
   var handleTextChange = function(postIt) {
     var element = getFromPage(postIt);
     postIt.text = element.children('.content').html();
+    var offset = element.offset();
+    postIt.left = offset.left;
+    postIt.top = offset.top;
     sender.send(postIt);
   };
 

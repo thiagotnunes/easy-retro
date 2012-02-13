@@ -49,6 +49,13 @@ $post_it_font_size: 12px;
   color: $color;
 }
 
+@mixin flip-horizontally {
+  -webkit-transform: rotateY(180deg);
+  -mox-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
 body {
   font: 12px "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
   background: #F2F2F2 url("../images/whiteboard.png") top center;
@@ -84,13 +91,19 @@ body {
   }
 
   .content {
-    height: 160px;
+    height: 135px;
     width: 180px;
     margin-top: 5px;
     margin-left: 5px;
     padding: 5px;
     overflow: auto;
     outline: none;
+  }
+
+  .footer {
+    height: 20px;
+    width: $post_it_side;
+    padding: 0 2px 0 2px;
   }
 }
 
@@ -134,4 +147,39 @@ menu {
 
 .hidden {
   display : none;
+}
+
+.icon {
+  float: left;
+  opacity: 0.3;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.vote {
+  @include flip-horizontally;
+  height: 25px;
+  width: 25px;
+  margin-top: 3px;
+  margin-right: -5px;
+}
+
+.list {
+  height: 25px;
+  width: 20px;
+  margin-top: 3px;
+}
+
+.edit {
+  height: 20px;
+  width: 20px;
+  margin-top: 7px;
+}
+
+.delete {
+  height: 15px;
+  width: 15px;
+  margin-top: 8px;
+  margin-left: 1px;
 }
