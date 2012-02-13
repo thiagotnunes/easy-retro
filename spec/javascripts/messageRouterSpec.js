@@ -1,43 +1,31 @@
 describe("Message Router", function() {
 
-  var adapter;
   var router;
+  var adapter;
+  var validator;
 
   beforeEach(function() {
     adapter = { create: jasmine.createSpy() };
-    router = messageRouter(adapter);
-  });
+    validator = { validate: jasmine.createSpy() };
 
-  it("should raise an error when message is not defined", function() {
-    try {
-      router.route();
-    } catch(e) {
-      expect(e.name).toBe("InvalidMessageException");
-    }
-  });
-
-  it("should raise an error when there is no action associated", function() {
-    try {
-      router.route({});
-    } catch(e) {
-      expect(e.name).toBe("InvalidMessageException");
-    }
+    router = messageRouter(validator, adapter);
   });
 
   it("should raise an error when the action has no mapping associated", function() {
-    try {
-      router.route({action: "invalidAction"});
-    } catch(e) {
-      expect(e.name).toBe("InvalidActionException");
-    }
+    expect(function() { router.route({ action: "invalidAction" }) }).toThrow({ 
+      name: "InvalidActionException",
+      message: "Action invalidAction has no corresponding mapping"
+    });
   });
 
-  it("should create a post it for create action", function() {
-    var message = { action: "create" };
+  it("should create a post it for valid action", function() {
+    var postIt = {};
+    var message = { action: "create" , postIt: postIt };
 
     router.route(message);
 
-    expect(adapter.create).toHaveBeenCalledWith(message);
+    expect(validator.validate).toHaveBeenCalledWith(message);
+    expect(adapter.create).toHaveBeenCalledWith(postIt);
   });
 
 });

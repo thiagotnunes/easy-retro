@@ -1,14 +1,7 @@
-var messageRouter = function(adapter) {
+var messageRouter = function(validator, adapter) {
 
-  var routes = {
+  var defaultRoutes = {
     create: adapter.create
-  };
-
-  var invalidMessageException = function() {
-    return { 
-        name: "InvalidMessageException", 
-        message: "An action must be defined for routing the message"
-      };
   };
 
   var invalidActionException = function(action) {
@@ -18,24 +11,19 @@ var messageRouter = function(adapter) {
     }
   };
 
-  var isInvalid = function(message) {
-    return !message || !message.action;
-  };
-
   var hasNoMappingFor = function(action) {
-    return !routes[action];
+    return !defaultRoutes[action];
   };
 
   var route = function(message) {
-    if (isInvalid(message))
-      throw invalidMessageException();
+    validator.validate(message);
 
     var action = message.action;
 
     if (hasNoMappingFor(action))
       throw invalidActionException(action);
 
-    routes[action](message);
+    defaultRoutes[action](message.postIt);
   };
 
   return {
