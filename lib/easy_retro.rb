@@ -5,7 +5,7 @@ require 'json'
 
 class EasyRetroApp < Sinatra::Base
 
-    set :mongo, ENV['MONGOHQ_URL'].gsub('mongodb', 'mongo')
+    set :mongo, ENV['MONGOHQ_URL']
 
     before do
         @boards = mongo['boards']
