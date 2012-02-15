@@ -1,7 +1,7 @@
 require 'bundler'
 Bundler.require :test
 
-namespace 'tests' do
+namespace 'test' do
 
   #desc "Run the acceptance tests"
   #task :acceptance do
@@ -19,24 +19,29 @@ namespace 'tests' do
   namespace 'js' do
     task :default => :ci
 
-    task :ci => [:require_jasmine] do
-      Rake::Task['jasmine:ci'].invoke
-    end
+    task :ci => ['jasmine:ci']
 
     desc "Run the javascript tests server"
-    task :server => [:require_jasmine] do
-      Rake::Task['jasmine:server'].invoke
-    end
+    task :server => ['jasmine:server']
   end
 
 end
 
-#task :spec => ["tests:unit", "tests:acceptance", "tests:js"]
-task :spec => ["tests:unit", "tests:js"]
+#task :spec => ["test:unit", "test:acceptance", "test:js"]
+task :spec => ["test:unit", "test:js"]
 task :default => :spec
 
 task :start do
   system("thin -R config.ru start")
+end
+
+namespace :jasmine do
+  task :ci => [:require_jasmine] do
+    Rake::Task['jasmine:ci'].invoke
+  end
+  task :server => [:require_jasmine] do
+    Rake::Task['jasmine:server'].invoke
+  end
 end
 
 task :require_jasmine do
