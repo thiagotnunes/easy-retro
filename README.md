@@ -21,3 +21,6 @@ Virtual Card Wall aimed for agile retrospectives
     
     $ mongod --dbpath /some/existing/dir
 
+## Production
+
+    $ access [http://easyretro.herokuapp.com](http://easyretro.herokuapp.com)
