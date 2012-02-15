@@ -5,6 +5,7 @@ require 'json'
 
 class EasyRetroApp < Sinatra::Base
 
+    puts ENV['MONGOHQ_URL']
     set :mongo, ENV['MONGOHQ_URL']
 
     before do
