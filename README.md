@@ -23,4 +23,4 @@ Virtual Card Wall aimed for agile retrospectives
 
 ## Production
 
-    $ access [http://easyretro.herokuapp.com](http://easyretro.herokuapp.com)
+Check the website at [http://easyretro.herokuapp.com](http://easyretro.herokuapp.com)
