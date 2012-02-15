@@ -17,3 +17,10 @@ Virtual Card Wall aimed for agile retrospectives
 
     $ bundle exec rake start
 
+## Mongo
+    
+    $ mongod --dbpath /some/existing/dir
+
+## Production
+
+Check the website at [http://easyretro.herokuapp.com](http://easyretro.herokuapp.com)

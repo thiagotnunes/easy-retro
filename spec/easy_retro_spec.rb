@@ -9,7 +9,7 @@ describe 'Easy retro base app' do
     EasyRetroApp
   end
 
-  it "should say a welcome message when accessing home page" do
+  it "should return code 200 when accessing home page" do
     get '/'
     last_response.should be_ok
   end
