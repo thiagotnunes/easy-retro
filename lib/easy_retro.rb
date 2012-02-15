@@ -5,7 +5,7 @@ require 'json'
 
 class EasyRetroApp < Sinatra::Base
 
-    set :mongo, 'mongo://localhost:27017/easy_retro'
+    set :mongo, ENV['MONGOHQ_URL']
 
     before do
         @boards = mongo['boards']

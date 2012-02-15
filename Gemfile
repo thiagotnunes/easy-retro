@@ -10,6 +10,9 @@ gem 'mongodb'
 gem 'bson'
 gem 'bson_ext'
 
+gem 'heroku'
+gem 'foreman'
+
 group :test do 
   gem 'ruby-debug19'
   gem 'rspec'
