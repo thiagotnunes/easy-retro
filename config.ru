@@ -2,7 +2,7 @@ require './lib/easy_retro'
 require 'faye'
 require 'sinatra/mongo'
 
-set :mongo, ENV['MONGOHQ_URL']
+set :mongo, ENV['MONGOLAB_URI']
 
 use Faye::RackAdapter, :mount      => '/faye',
                        :timeout    => 25
