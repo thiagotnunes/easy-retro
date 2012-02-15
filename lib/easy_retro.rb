@@ -1,15 +1,8 @@
 require 'sinatra'
-require 'sinatra/mongo'
 require 'mongo'
 require 'json'
 
 class EasyRetroApp < Sinatra::Base
-
-    def initialize
-      puts ENV['MONGOHQ_URL']
-    end
-
-    set :mongo, ENV['MONGOHQ_URL']
 
     before do
         @boards = mongo['boards']
