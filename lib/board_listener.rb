@@ -1,20 +1,22 @@
+require_relative 'boards'
+
 class BoardListener
 
   attr_reader :postIts 
 
   def initialize(mongo)
-    @boards = mongo["boards"]
+    @boards = BoardRepo.new
   end
 
   def outgoing(message, callback)
     if (message["channel"] == "/board")
       name = message["data"]["board"]
       postIt = message["data"]["postIt"]
-      board = @boards.find_one({name: name})
+      board = @boards.get(name)
       board["postIts"] = {} if board["postIts"].nil?
       board["postIts"][postIt["id"]] = postIt
 
-      @boards.update({name: name}, board)
+      @boards.update(board)
     end
 
     callback.call(message)
