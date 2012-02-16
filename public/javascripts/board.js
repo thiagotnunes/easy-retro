@@ -8,10 +8,23 @@ var board = function() {
     update: adapter.update
   });
 
+  var success = function(data) {
+    var postIts = data.postIts;
+    if (data.postIts) { 
+      $.each(postIts, function(postIt) {
+        adapter.create(data.postIts[postIt]);
+      });
+    }
+  };
+
+  $.post('/boards', { name: 'board' });
+  $.get('/boards/board', success);
   sender.subscribe(router.route);
 
   var newPostIt = function(group) {
-    var message = { action: "create", postIt: builder.create({ group: group }) };
+    var postIt = builder.create({ group: group });
+    var message = { action: "create", board: "board", postIt: postIt };
+
     sender.send(message);
   };
 

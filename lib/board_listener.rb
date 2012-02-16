@@ -2,18 +2,18 @@ class BoardListener
 
   attr_reader :postIts 
 
-  def initialize
-    @postIts = Hash.new 
+  def initialize(mongo)
+    @boards = mongo["boards"]
   end
 
   def outgoing(message, callback)
-    if (message["channel"] == "/meta/subscribe")
-      message["ext"] = @postIts
-    end
-
     if (message["channel"] == "/board")
+      name = message["data"]["board"]
       postIt = message["data"]["postIt"]
-      @postIts[postIt["id"]] = postIt
+      board = @boards.find_one({name: name})
+      board["postIts"][postIt["id"]] = postIt
+
+      @boards.update({name: name}, board)
     end
 
     callback.call(message)

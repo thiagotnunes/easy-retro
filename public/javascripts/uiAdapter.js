@@ -49,7 +49,7 @@ var uiAdapter = function(sender) {
     postIt.left = offset.left;
     postIt.top = offset.top;
 
-    sender.send({action: "update", postIt: postIt});
+    sender.send({action: "update", board: 'board', postIt: postIt});
   };
 
   return {

@@ -11,20 +11,20 @@ class EasyRetroApp < Sinatra::Base
     end
 
     get '/' do
-        return redirect '/index.html'
+        redirect '/index.html'
     end
 
     post '/boards' do 
-        @boards.insert(params)
+        @boards.insert(params) unless @boards.find_one(:name => params['name'])
     end
 
     get '/boards' do
-        return @boards.find.each { |board| puts board }
+        @boards.find.each { |board| puts board }
     end
 
     get '/boards/:name' do |name|
         content_type :json
-        return @boards.find_one(:name => name).to_json
+        @boards.find_one(:name => name).to_json
     end
 
 end
