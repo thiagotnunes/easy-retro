@@ -6,16 +6,14 @@ class BoardListener
     @postIts = Hash.new 
   end
 
-  def outgoing (message, callback)
-
-    p "outgoing: #{message}"
-    if (message["channel"] == "meta/subscribe")
+  def outgoing(message, callback)
+    if (message["channel"] == "/meta/subscribe")
       message["ext"] = @postIts
     end
 
-    if message["channel"] == "/board"
-      data = message["data"]
-      @postIts[data["id"]] = data
+    if (message["channel"] == "/board")
+      postIt = message["data"]["postIt"]
+      @postIts[postIt["id"]] = postIt
     end
 
     callback.call(message)

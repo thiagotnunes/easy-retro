@@ -11,7 +11,7 @@ class EasyRetroApp < Sinatra::Base
     end
 
     get '/' do
-        return get '/index.html'
+        return redirect '/index.html'
     end
 
     post '/boards' do 
