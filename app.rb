@@ -2,6 +2,8 @@ require 'sinatra'
 require 'mongo'
 require 'json'
 
+set :root, File.dirname(__FILE__)
+
 class EasyRetroApp < Sinatra::Base
 
     before do
@@ -9,7 +11,7 @@ class EasyRetroApp < Sinatra::Base
     end
 
     get '/' do
-        return File.open("public/index.html")
+        return get '/index.html'
     end
 
     post '/boards' do 
@@ -23,10 +25,6 @@ class EasyRetroApp < Sinatra::Base
     get '/boards/:name' do |name|
         content_type :json
         return @boards.find_one(:name => name).to_json
-    end
-
-    get '/*' do |file|
-        return File.open('public/' + file)
     end
 
 end

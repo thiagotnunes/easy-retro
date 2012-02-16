@@ -1,4 +1,4 @@
-require './lib/easy_retro'
+require './app'
 require './lib/board_listener'
 require 'faye'
 require 'sinatra/mongo'
