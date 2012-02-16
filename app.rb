@@ -1,13 +1,13 @@
 require 'sinatra'
-require 'mongo'
-require 'json'
+require 'sinatra/base'
+require './lib/boards'
 
 set :root, File.dirname(__FILE__)
 
 class EasyRetroApp < Sinatra::Base
 
     before do
-        @boards = mongo['boards']
+        @boards = BoardRepo.new
     end
 
     get '/' do
@@ -15,16 +15,16 @@ class EasyRetroApp < Sinatra::Base
     end
 
     post '/boards' do 
-        @boards.insert(params)
+        @boards.insert(params) 
     end
 
-    get '/boards' do
-        return @boards.find.each { |board| puts board }
+    put '/boards' do
+        @boards.update(params)
     end
 
     get '/boards/:name' do |name|
         content_type :json
-        return @boards.find_one(:name => name).to_json
+        return @boards.get(name).to_json
     end
 
 end
