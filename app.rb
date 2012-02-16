@@ -19,7 +19,7 @@ class EasyRetroApp < Sinatra::Base
     end
 
     put '/boards' do
-        @boards.insert(params) unless @boards.find_one(:name => params['name'])
+        @boards.update(params)
     end
 
     get '/boards/:name' do |name|
