@@ -22,7 +22,7 @@ describe("Message Router", function() {
 
   it("should create a post it for valid action", function() {
     var postIt = {};
-    var message = { action: "create" , postIt: postIt };
+    var message = { action: "create" , board: { postIt: postIt } };
 
     router.route(message);
 
