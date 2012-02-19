@@ -7,7 +7,7 @@ set :root, File.dirname(__FILE__)
 class EasyRetroApp < Sinatra::Base
 
     before do
-        @boards = BoardRepo.new
+        @boards = Boards.new(mongo['boards'])
     end
 
     get '/' do

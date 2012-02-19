@@ -19,7 +19,7 @@ var messageRouter = function(validator, routes) {
     if (hasNoMappingFor(action))
       throw invalidActionException(action);
 
-    routes[action](message.postIt);
+    routes[action](message.board.postIt);
   };
 
   return {

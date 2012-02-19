@@ -22,7 +22,7 @@ namespace 'test' do
 end
 
 #task :spec => ["test:unit", "test:acceptance", "test:js"]
-task :spec => ["test:js"]
+task :spec => ["test:unit", "test:js"]
 task :default => :spec
 
 task :start do

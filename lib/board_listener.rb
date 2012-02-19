@@ -4,14 +4,16 @@ class BoardListener
 
   attr_reader :postIts 
 
-  def initialize(mongo)
-    @boards = BoardRepo.new
+  def initialize(repo)
+    @boards = repo
   end
 
   def outgoing(message, callback)
     if (message["channel"] == "/board")
-      name = message["data"]["board"]
-      postIt = message["data"]["postIt"]
+      messageBoard = message["data"]["board"]
+      name = messageBoard["name"]
+      postIt = messageBoard["postIt"]
+
       board = @boards.get(name)
       board["postIts"] = {} if board["postIts"].nil?
       board["postIts"][postIt["id"]] = postIt
