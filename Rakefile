@@ -2,12 +2,6 @@ require 'bundler'
 Bundler.require :test
 
 namespace 'test' do
-
-  #desc "Run the acceptance tests"
-  #task :acceptance do
-    #sh 'bundle exec rspec spec/acceptance --color --format progress'
-  #end
-
   desc "Run the unit tests"
   task :unit do
     sh 'RACK_ENV=test; bundle exec rspec spec/*_spec.rb --color --format progress'
@@ -33,6 +27,10 @@ task :default => :spec
 
 task :start do
   system("thin -R config.ru start")
+end
+
+task :db do
+    system("mongod --dbpath /tmp/db & > /dev/null")
 end
 
 namespace :jasmine do
