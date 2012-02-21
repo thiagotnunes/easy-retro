@@ -34,4 +34,10 @@ describe("ui adapter", function() {
     expect(element).toHaveClass('ui-draggable');
   });
 
+  it("remove a post it", function() {
+    var postIt = {id: 123, text: 'some text'};
+    var element = adapter.create(postIt);
+    element.children('.removeButton').click();
+    expect($("#123")).not.toExist();
+  });
 });
