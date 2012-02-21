@@ -2,8 +2,6 @@ require_relative 'boards'
 
 class BoardListener
 
-  attr_reader :postIts 
-
   def initialize(repo)
     @boards = repo
   end
