@@ -53,4 +53,24 @@ describe BoardListener, do
    @listener.outgoing message, @callback
   end
 
+  it "remove a post it" do
+    message = {
+      "channel" => "/board",
+      "data" => {
+        "action" => "remove",
+        "board" => {
+          "name" => "theBoard",
+          "postIt" => {
+            "id" => "1",
+            "text" => "other text"
+          }
+        }
+      }
+    }
+
+   @repo.should_receive(:get).with("theBoard").and_return({"postIts" => {"1" => {"id" => "1", "text" => "some text"}, "2" => {"id" => "2", "text" => "more text"}}})
+   @repo.should_receive(:update).with({"postIts" => {"2" => {"id" => "2", "text" => "more text"}}})
+    @callback.should_receive(:call).with(message) 
+    @listener.outgoing message, @callback
+  end
 end

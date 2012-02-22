@@ -34,10 +34,18 @@ describe("ui adapter", function() {
     expect(element).toHaveClass('ui-draggable');
   });
 
-  it("remove a post it", function() {
-    var postIt = {id: 123, text: 'some text'};
+  it("should send a remove message when clicking remove button", function() {
+    var postIt = {id: '123', text: 'some text'};
     var element = adapter.create(postIt);
     element.children('.removeButton').click();
+    var expectedMessage =  { action: 'remove', board: {name: 'board', postIt: {id: '123', text: 'some text'}}};
+    expect(sender.send).toHaveBeenCalledWith(expectedMessage);
+  });
+
+  it("should remove a post it", function() {
+    var postIt = {id: 123, text: 'some text'};
+    adapter.create(postIt);
+    adapter.remove({id: "123"});
     expect($("#123")).not.toExist();
   });
 });

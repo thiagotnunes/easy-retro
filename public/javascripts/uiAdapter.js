@@ -29,7 +29,9 @@ var uiAdapter = function(sender) {
       stop: function() { handleTextChange(postIt);}
     });
 
-    element.children('.removeButton').click(function() { element.remove(); });
+    element.children('.removeButton').click(function() {
+      sender.send({action: "remove", board: {name: "board", postIt: postIt}});
+    });
     return element;
   };
 
@@ -53,8 +55,13 @@ var uiAdapter = function(sender) {
     sender.send({action: "update", board: { name: 'board', postIt: postIt} });
   };
 
+  var remove = function (postIt) {
+    getFromPage(postIt).remove(); 
+  };
+
   return {
     create: create,
-    update: update
+    update: update,
+    remove: remove
   };
 };

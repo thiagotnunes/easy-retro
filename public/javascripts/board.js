@@ -5,7 +5,8 @@ var board = function() {
   var builder = postItBuilder();
   var router = messageRouter(messageValidator(), {
     create: adapter.create,
-    update: adapter.update
+    update: adapter.update,
+    remove: adapter.remove
   });
 
   var success = function(data) {
