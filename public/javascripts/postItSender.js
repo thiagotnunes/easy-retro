@@ -6,7 +6,9 @@ var postItSender = function() {
   };
 
   var send = function(postIt) {
-    client.publish("/board", postIt);
+    var publication = client.publish("/board", postIt);
+    publication.callback(function() { alert('Success'); });
+    publication.errback(function() { alert('Error'); });
   };
 
   return {
