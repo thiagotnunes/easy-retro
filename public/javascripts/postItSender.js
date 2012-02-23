@@ -7,8 +7,8 @@ var postItSender = function() {
 
   var send = function(postIt) {
     var publication = client.publish("/board", postIt);
-    publication.callback(function() { alert('Success'); });
-    publication.errback(function() { alert('Error'); });
+    publication.callback(function() { console.log('Success'); });
+    publication.errback(function(error) { console.log('Error ' + error); });
   };
 
   return {
