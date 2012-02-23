@@ -12,6 +12,8 @@ var messageRouter = function(validator, routes) {
   };
 
   var route = function(message) {
+    console.log('Received message');
+    console.log(message);
     validator.validate(message);
 
     var action = message.action;
