@@ -29,7 +29,7 @@ var uiAdapter = function(sender) {
       stop: function() { handleTextChange(postIt);}
     });
 
-    element.children('.removeButton').click(function() {
+    element.find('.delete').click(function() {
       sender.send({action: "remove", board: {name: "board", postIt: postIt}});
     });
     return element;

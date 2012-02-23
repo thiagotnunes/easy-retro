@@ -32,13 +32,10 @@ body {
   -o-box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5);
   box-shadow: 0 1px 2px rgba(29, 41, 41, 0.5); }
   .post_it .header {
-    float: left;
     height: 20px;
-    width: 185px;
+    width: 200px;
     font-weight: bold;
     cursor: move; }
-  .post_it .removeButton {
-    float: right; }
   .post_it .content {
     height: 135px;
     width: 180px;
@@ -91,7 +88,8 @@ body {
 .new {
   position: absolute;
   top: 50px;
-  left: 10px; } 
+  left: 10px; }
+
 .handwritten {
   font-family: "GTramontina"; }
 

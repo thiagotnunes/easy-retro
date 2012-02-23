@@ -37,7 +37,7 @@ describe("ui adapter", function() {
   it("should send a remove message when clicking remove button", function() {
     var postIt = {id: '123', text: 'some text'};
     var element = adapter.create(postIt);
-    element.children('.removeButton').click();
+    element.find('.delete').click();
     var expectedMessage =  { action: 'remove', board: {name: 'board', postIt: {id: '123', text: 'some text'}}};
     expect(sender.send).toHaveBeenCalledWith(expectedMessage);
   });
