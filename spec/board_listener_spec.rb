@@ -73,4 +73,10 @@ describe BoardListener, do
     @callback.should_receive(:call).with(message) 
     @listener.outgoing message, @callback
   end
+  it "should ignore messages without data" do
+    message = {"id"=>"5", "clientId"=>"f0czplj7j6i1ujnse0cl38z0l", "channel"=>"/board", "successful"=>true}
+
+    @callback.should_receive(:call).with(message) 
+    @listener.outgoing message, @callback
+  end
 end
