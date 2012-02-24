@@ -56,7 +56,8 @@ var uiAdapter = function(sender) {
   };
 
   var remove = function (postIt) {
-    getFromPage(postIt).remove(); 
+    var element = getFromPage(postIt);
+    element.fadeOut(function() {element.remove()}); 
   };
 
   return {
