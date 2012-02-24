@@ -7,8 +7,8 @@ class BoardListener
   end
 
   def outgoing(message, callback)
-    if (message["channel"] == "/board")
-      data = message["data"]
+    data = message["data"]
+    if (message["channel"] == "/board" && data)
       action = data["action"]
 
       messageBoard = data["board"]

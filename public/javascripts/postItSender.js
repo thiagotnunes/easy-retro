@@ -1,6 +1,5 @@
 var postItSender = function() {
   var client = new Faye.Client("/faye");
-  client.disable('websocket');
 
   var subscribe = function(updateCallback) {
     client.subscribe("/board", updateCallback);
