@@ -2,7 +2,7 @@
 
 Virtual Card Wall aimed for agile retrospectives
 
-[![](http://travis-ci.org/thiagotnunes/easy-retro.png)](http://travis-ci.org/thiagotnunes/easy-retro)
+[![Build Status](https://secure.travis-ci.org/thiagotnunes/easy-retro.png?branch=master)](http://travis-ci.org/thiagotnunes/easy-retro)
 
 ## Installing
 
