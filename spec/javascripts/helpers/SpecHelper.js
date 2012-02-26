@@ -9,3 +9,4 @@ beforeEach(function() {
   });
 });
 */
+$.fx.off = true;
