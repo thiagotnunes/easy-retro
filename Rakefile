@@ -25,10 +25,12 @@ end
 task :spec => ["test:unit", "test:js"]
 task :default => :spec
 
+desc "Run the server"
 task :start do
   system("thin -R config.ru start")
 end
 
+desc "Run the mongo db"
 task :db do
     system("mongod --dbpath /tmp/db & > /dev/null")
 end
