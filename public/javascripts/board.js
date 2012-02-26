@@ -11,7 +11,7 @@ var board = function() {
 
   var success = function(data) {
     var postIts = data.postIts;
-    if (data.postIts) { 
+    if (data.postIts) {
       $.each(postIts, function(postIt) {
         adapter.create(data.postIts[postIt]);
       });

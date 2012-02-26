@@ -1,5 +1,7 @@
 var uiAdapter = function(sender) {
 
+  var draggable = require("draggable");
+
   var update = function(postIt) {
     var element = getFromPage(postIt);
 
@@ -23,16 +25,21 @@ var uiAdapter = function(sender) {
     element.offset({left: postIt.left, top: postIt.top});
     element.show();
     $("#board").append(element);
-    element.draggable({
-      containment: "#board", 
-      handle: ".header",
-      stop: function() { handleTextChange(postIt);}
-    });
+
+    makeDraggable(element, postIt);
 
     element.find('.delete').click(function() {
       sender.send({action: "remove", board: {name: "board", postIt: postIt}});
     });
     return element;
+  };
+
+  var makeDraggable = function (element, postIt) {
+    var rawElement = element.get(0);
+    var handle = element.find(".header");
+
+    draggable(rawElement, handle.get(0));
+    rawElement.draggableListeners['stop'].push(function() { handleTextChange(postIt); } );
   };
 
   var toHtml = function(postIt) {

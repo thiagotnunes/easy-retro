@@ -3,8 +3,8 @@
               "order!vendor/jquery.ui.core",
               "order!vendor/jquery.ui.widget",
               "order!vendor/jquery.ui.mouse",
-              "order!vendor/jquery.ui.draggable",
               "faye.js",
+              "draggable",
               "board",
               "uiAdapter",
               "postItSender",
@@ -12,7 +12,7 @@
               "messageValidator",
               "messageRouter"];
 
-  var callback = function(someModule) {
+  var callback = function() {
                 $(document).ready(function() {
                   var retroBoard = board();
                   retroBoard.bindButtons();

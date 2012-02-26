@@ -16,7 +16,15 @@ src_files:
     - public/javascripts/vendor/jquery.ui.widget.js
     - public/javascripts/vendor/jquery.ui.mouse.js
     - public/javascripts/vendor/jquery.ui.draggable.js
-    - public/javascripts/**/*.js
+    - public/javascripts/faye.js
+    - public/javascripts/draggable.js
+    - public/javascripts/board.js
+    - public/javascripts/uiAdapter.js
+    - public/javascripts/postItSender.js
+    - public/javascripts/postItBuilder.js
+    - public/javascripts/messageValidator.js
+    - public/javascripts/messageRouter.js
+    - public/javascripts/require.js
 
 # stylesheets
 #

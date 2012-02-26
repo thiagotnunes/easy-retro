@@ -10,3 +10,16 @@ beforeEach(function() {
 });
 */
 $.fx.off = true;
+
+require.config({baseUrl: "public/javascripts/"});
+(function () {
+  var deps = ["draggable",
+              "board",
+              "uiAdapter",
+              "postItSender",
+              "postItBuilder",
+              "messageValidator",
+              "messageRouter"];
+
+  require(deps);
+}())
