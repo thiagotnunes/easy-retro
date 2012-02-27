@@ -17,7 +17,6 @@ describe("ui adapter", function() {
     expect(element.children('.content')).toHaveHtml('some text');
     expect($('#123')).toExist();
     expect($('[id=123]').length).toEqual(1);
-    expect(element).toHaveClass('ui-draggable');
   });
 
   it("should update a post it", function() {
@@ -31,7 +30,6 @@ describe("ui adapter", function() {
     expect(element).toHaveId('123');
     expect(element.children('.content')).toHaveHtml('other text');
     expect($('[id=123]').length).toEqual(1);
-    expect(element).toHaveClass('ui-draggable');
   });
 
   it("should send a remove message when clicking remove button", function() {
