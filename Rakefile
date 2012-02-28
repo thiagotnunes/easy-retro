@@ -21,14 +21,19 @@ namespace 'test' do
 
 end
 
-#task :spec => ["test:unit", "test:acceptance", "test:js"]
 task :spec => ["test:unit", "test:js"]
 task :default => :spec
 
-desc "Run the server"
-task :start do
-  system("thin -R config.ru start")
+namespace :start do
+  [:production, :test, :development].each do |env|
+    task env do
+      system("thin -R config.ru -e #{env} start")
+    end
+  end
 end
+
+desc "Run the server"
+task :start => ["start:production"]
 
 desc "Run the mongo db"
 task :db do

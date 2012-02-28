@@ -8,6 +8,6 @@ set :mongo, ENV['MONGOLAB_URI'] || "mongo://localhost:27017/easy_retro"
 
 use Faye::RackAdapter, :mount      => '/faye',
                        :timeout    => 25,
-                       :extensions => [Boards.new(mongo['boards'])]
+                       :extensions => [BoardListener.new(Boards.new(mongo['boards']))]
 
 run EasyRetroApp

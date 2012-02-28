@@ -2,6 +2,7 @@ source "http://rubygems.org"
 
 gem 'sinatra'
 gem 'sinatra-mongo'
+gem 'sinatra-reloader'
 gem 'rake'
 gem 'sass'
 gem 'faye'
