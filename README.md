@@ -17,6 +17,10 @@ Virtual Card Wall aimed for agile retrospectives
 
     $ bundle exec rake start
 
+    Which will start the server in production environment. Other options include test and development.
+
+    $bundle exec rake start:development
+
 ## Mongo
     
     $ mongod --dbpath /some/existing/dir
