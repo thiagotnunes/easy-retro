@@ -27,13 +27,14 @@ task :default => :spec
 namespace :start do
   [:production, :test, :development].each do |env|
     task env do
-      system("thin -R config.ru -e #{env} start")
+      debug_mode = env == :development ? '--debug' : ''
+      system("thin -R config.ru #{debug_mode} -e #{env} start")
     end
   end
 end
 
 desc "Run the server"
-task :start => ["start:production"]
+task :start => ["start:development"]
 
 desc "Run the mongo db"
 task :db do
