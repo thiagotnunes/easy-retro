@@ -14,7 +14,11 @@ class Boards
   end
 
   def get(name)
-    @db.find_one(:name => name)
+    board = @db.find_one(:name => name)
+    if (board)
+      board["postIts"] = {} if board["postIts"].nil?
+    end
+    board
   end
 end                                                                 
 

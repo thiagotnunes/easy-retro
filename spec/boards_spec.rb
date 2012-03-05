@@ -29,10 +29,17 @@ describe Boards, do
     @boards.update(@board)
   end
 
-  it "should get a board" do
-   @mongo.should_receive(:find_one).with(:name => "theBoard") 
+  context "get board" do
+    it "should get a board" do
+     @mongo.should_receive(:find_one).with(:name => "theBoard") 
 
-   @boards.get("theBoard")
+     @boards.get("theBoard")
+    end
+
+    it "get a board with post its even when no post its present" do
+      @mongo.should_receive(:find_one).with(:name => "theBoard").and_return(@board)
+      board = @boards.get("theBoard")
+      board["postIts"].should == {} 
+    end
   end
-
 end
