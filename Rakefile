@@ -1,6 +1,14 @@
 require 'bundler'
 Bundler.require :test
 
+task :default => :spec
+
+desc "Run all tests"
+task :spec => ["test:unit", "test:js"]
+
+desc "Run server in development mode"
+task :start => 'start:development'
+
 namespace 'test' do
   desc "Run the unit tests"
   task :unit do
@@ -11,8 +19,6 @@ namespace 'test' do
   task :js => 'js:ci'
 
   namespace 'js' do
-    task :default => :ci
-
     task :ci => ['jasmine:ci']
 
     desc "Run the javascript tests server"
@@ -21,11 +27,9 @@ namespace 'test' do
 
 end
 
-task :spec => ["test:unit", "test:js"]
-task :default => :spec
-
 namespace :start do
   [:production, :test, :development].each do |env|
+    desc "Start server in #{env} mode"
     task env do
       debug_mode = env == :development ? '--debug' : ''
       system("thin -R config.ru #{debug_mode} -e #{env} start")
@@ -33,12 +37,11 @@ namespace :start do
   end
 end
 
-desc "Run the server"
-task :start => ["start:development"]
+directory "/tmp/db"
 
 desc "Run the mongo db"
-task :db do
-    system("mongod --dbpath /tmp/db & > /dev/null")
+task :db => ["/tmp/db"] do
+    system("mongod --dbpath /tmp/db")
 end
 
 namespace :jasmine do
@@ -61,4 +64,3 @@ task :require_jasmine do
     end
   end
 end
-
