@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), 'app')
+require File.join(File.dirname(__FILE__), 'easy_retro')
 require 'faye'
 require 'sinatra/mongo'
 
