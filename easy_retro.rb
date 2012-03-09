@@ -33,8 +33,4 @@ class EasyRetroApp < Sinatra::Base
     @boards.get(name).to_json
   end
 
-  get '/css/easy_retro.css' do
-    scss :easy_retro
-  end
-
 end
