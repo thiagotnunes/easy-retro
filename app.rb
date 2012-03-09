@@ -1,7 +1,9 @@
 require 'sinatra'
 require 'sinatra/base'
 require 'sinatra/reloader'
-require './lib/boards'
+
+require File.join(File.dirname(__FILE__), 'lib', 'board_listener')
+require File.join(File.dirname(__FILE__), 'models', 'board')
 
 set :root, File.dirname(__FILE__)
 
@@ -11,7 +13,7 @@ class EasyRetroApp < Sinatra::Base
   end
 
   before do
-    @boards = Boards.new(mongo['boards'])
+    @boards = Board.new(mongo['boards'])
   end
 
   get '/' do

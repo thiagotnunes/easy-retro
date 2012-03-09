@@ -1,4 +1,4 @@
-require_relative 'boards'
+require File.join(File.dirname(__FILE__), '..', 'models', 'board')
 
 class BoardListener
 

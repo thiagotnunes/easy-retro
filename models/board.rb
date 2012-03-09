@@ -1,6 +1,6 @@
 require 'mongo'
 
-class Boards
+class Board
   def initialize(db)
     @db = db
   end

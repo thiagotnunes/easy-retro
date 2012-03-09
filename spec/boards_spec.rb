@@ -1,12 +1,12 @@
-require 'rspec'
-require 'boards'
+require File.join(File.dirname(__FILE__), 'spec_helper')
+require File.join(File.dirname(__FILE__), '..', 'models', 'board')
 
-describe Boards, do
+describe "A Board", do
 
   before :each do
     @board = {"name" => "theBoard" }
     @mongo = double('mongo')
-    @boards = Boards.new(@mongo)
+    @boards = Board.new(@mongo)
   end
 
   it "should insert a new board" do
