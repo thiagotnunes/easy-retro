@@ -37,11 +37,11 @@ namespace :start do
   end
 end
 
-directory "./db/dev"
+directory "/tmp/db"
 
 desc "Run the mongo db"
-task :db => ["./db/dev"] do
-    system("mongod --dbpath db/dev/")
+task :db => ["/tmp/db"] do
+    system("mongod --dbpath /tmp/db")
 end
 
 namespace :jasmine do
