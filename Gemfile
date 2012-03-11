@@ -1,12 +1,12 @@
 source "http://rubygems.org"
 
 gem 'sinatra'
-gem 'sinatra-mongo'
 gem 'rake'
 gem 'sass'
 gem 'faye'
 gem 'mongo'
 gem 'mongodb'
+gem 'mongo_mapper'
 gem 'bson'
 gem 'bson_ext'
 

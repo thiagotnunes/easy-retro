@@ -2,8 +2,8 @@ require 'sinatra'
 require 'sinatra/base'
 require 'sinatra/reloader'
 
-require File.join(File.dirname(__FILE__), 'lib', 'board_listener')
-require File.join(File.dirname(__FILE__), 'models', 'board')
+Dir["./lib/**/*.rb"].each { |helper| require helper }
+Dir["./models/**/*.rb"].each { |model| require model }
 
 set :root, File.dirname(__FILE__)
 
@@ -12,25 +12,22 @@ class EasyRetroApp < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  before do
-    @boards = Board.new(mongo['boards'])
-  end
-
   get '/' do
     redirect '/index.html'
   end
 
-  post '/boards' do 
-    @boards.insert(params) 
+  post '/board' do
+    redirect "/board/#{params['name']}" if Board.find_by_name(params['name'])
+
+    Board.create(:name => params['name'], :post_its => [])
   end
 
-  put '/boards' do
-    @boards.update(params)
+  put '/board' do
   end
 
-  get '/boards/:name' do |name|
+  get '/board/:name' do |name|
     content_type :json
-    @boards.get(name).to_json
+    Board.find_by_name(name).to_json
   end
 
 end

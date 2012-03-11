@@ -1,24 +1,10 @@
-require 'mongo'
+require 'mongo_mapper'
 
 class Board
-  def initialize(db)
-    @db = db
-  end
+  include MongoMapper::Document
 
-  def insert(board)
-    @db.insert(board) unless @db.find_one(:name => board['name'])
-  end
+  key :name, String, :required => true, :unique => true
 
-  def update(board)
-    @db.update({ :name => board['name'] }, board)
-  end
-
-  def get(name)
-    board = @db.find_one(:name => name)
-    if (board)
-      board["postIts"] = {} if board["postIts"].nil?
-    end
-    board
-  end
+  many :post_its
 end                                                                 
 

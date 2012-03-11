@@ -1,10 +1,6 @@
-require File.join(File.dirname(__FILE__), '..', 'models', 'board')
+Dir["./models/**/*.rb"].each { |model| require model }
 
 class BoardListener
-
-  def initialize(repo)
-    @boards = repo
-  end
 
   def outgoing message, callback 
     data = message["data"]
@@ -17,14 +13,21 @@ class BoardListener
 
   def execute action, messageBoard
     name = messageBoard["name"]
-    board = @boards.get(name)
+    board = Board.find_by_name(name)
     postIt = messageBoard["postIt"]
     if (action == "remove")
-      board["postIts"].delete(postIt["id"])
-    elsif
-      board["postIts"][postIt["id"]] = postIt
+      board.post_its.delete_if {|p| p[:id] == postIt["id"]}
+    elsif (action == "create")
+      board.post_its << PostIt.new(:id => postIt["id"], :group => postIt["group"], :left => postIt["left"], :top => postIt["top"], :text => postIt["text"])
+    else
+      board.post_its.select {|p| p[:id] == postIt["id"]}.each do |p|
+        p.group = postIt["group"]
+        p.text = postIt["text"]
+        p.left = postIt["left"]
+        p.top = postIt["top"]
+      end
     end
-    @boards.update(board)
+    board.save
   end
 
 end

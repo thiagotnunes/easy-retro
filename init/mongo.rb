@@ -1,3 +1,5 @@
-require 'sinatra/mongo'
+require 'mongo_mapper'
 
-set :mongo, ENV['MONGOLAB_URI'] || "mongo://localhost:27017/easy_retro"
+MongoMapper.connection = Mongo::Connection.from_uri(ENV['MONGOLAB_URI']) if ENV['MONGOLAB_URI']
+
+MongoMapper.database = "easy_retro"

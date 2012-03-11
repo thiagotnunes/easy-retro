@@ -5,8 +5,8 @@ var postItSender = function() {
     client.subscribe("/board", updateCallback);
   };
 
-  var send = function(postIt) {
-    client.publish("/board", postIt);
+  var send = function(message) {
+    client.publish("/board", message);
   };
 
   return {

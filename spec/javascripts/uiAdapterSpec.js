@@ -36,7 +36,7 @@ describe("ui adapter", function() {
     var postIt = {id: '123', text: 'some text'};
     var element = adapter.create(postIt);
     element.find('.delete').click();
-    var expectedMessage =  { action: 'remove', board: {name: 'board', postIt: {id: '123', text: 'some text'}}};
+    var expectedMessage =  { action: 'remove', board: {name: 'demo', postIt: {id: '123', text: 'some text'}}};
     expect(sender.send).toHaveBeenCalledWith(expectedMessage);
   });
 

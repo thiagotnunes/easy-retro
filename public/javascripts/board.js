@@ -10,21 +10,21 @@ var board = function() {
   });
 
   var success = function(data) {
-    var postIts = data.postIts;
-    if (data.postIts) {
+    var postIts = data.post_its;
+    if (data.post_its) {
       $.each(postIts, function(postIt) {
-        adapter.create(data.postIts[postIt]);
+        adapter.create(data.post_its[postIt]);
       });
     }
   };
 
-  $.post('/boards', { name: 'board' });
-  $.get('/boards/board', success);
+  $.post('/board', { name: 'demo' });
+  $.get('/board/demo', success);
   sender.subscribe(router.route);
 
   var newPostIt = function(group) {
     var postIt = builder.create({ group: group });
-    var message = { action: "create", board: { name: "board", postIt: postIt } };
+    var message = { action: "create", board: { name: "demo", postIt: postIt } };
 
     sender.send(message);
   };
