@@ -14,11 +14,11 @@ class Board
   alias :== :eql?
 
   def create_post_it post_it
-    post_its << PostIt.new(post_it)
+    self.post_its << PostIt.new(post_it)
   end
 
   def update_post_it post_it
-    post_its.select {|p| p[:id] == post_it["id"]}.each do |p|
+    self.post_its.select {|p| p[:id] == post_it["id"]}.each do |p|
       p.group = post_it["group"]
       p.text = post_it["text"]
       p.left = post_it["left"]
@@ -27,7 +27,7 @@ class Board
   end
 
   def remove_post_it post_it
-    post_its.delete_if {|p| p[:id] == post_it["id"]}
+    self.post_its.delete_if {|p| p[:id] == post_it["id"]}
   end
 end
 
