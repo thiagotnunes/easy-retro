@@ -14,15 +14,8 @@ class BoardListener
   def execute action, message
     board = Board.find_by_name(message["name"])
 
-    post_it = message["post_it"]
+    board.send "#{action}_post_it".to_sym, message["post_it"]
 
-    if (action == "remove")
-      board.remove_post_it post_it
-    elsif (action == "create")
-      board.create_post_it post_it
-    else
-      board.update_post_it post_it
-    end
     board.save
   end
 
