@@ -30,6 +30,25 @@ describe BoardListener, do
     updated_board.post_its.first.should == more_text_post_it
   end
 
+  it "should create a post it" do
+    third_post_it = PostIt.new :id => 3, :text => "third text"
+    message = {
+      "channel" => "/board",
+      "data" => {
+        "action" => "create",
+        "board" => { "name" => "theBoard", "postIt" => third_post_it }
+      }
+    }
+
+    @callback.should_receive(:call).with(message)
+    listener.outgoing message, @callback
+
+    updated_board = Board.find_by_name "theBoard"
+
+    updated_board.post_its.should have(3).item
+    updated_board.post_its.third.should == third_post_it
+  end
+
   it "should ignore messages without data" do
     message = {"id"=>"5", "clientId"=>"f0czplj7j6i1ujnse0cl38z0l", "channel"=>"/board", "successful"=>true}
 

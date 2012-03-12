@@ -13,4 +13,14 @@ class PostIt
 
   embedded_in :board
 
+  def eql?(other)
+    self.class.eql?(other.class) &&
+       id == other.id &&
+       group == other.group &&
+       text == other.text &&
+       left == other.left &&
+       top == other.top
+  end
+  alias :== :eql?
+
 end
