@@ -24,7 +24,7 @@ var board = function() {
 
   var newPostIt = function(group) {
     var postIt = builder.create({ group: group });
-    var message = { action: "create", board: { name: "demo", postIt: postIt } };
+    var message = { action: "create", board: { name: "demo", post_it: postIt } };
 
     sender.send(message);
   };

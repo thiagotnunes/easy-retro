@@ -38,7 +38,7 @@ message: "A board must be defined within the message"
   });
 
   it("should not raise any error when message is well formed", function() {
-      validator.validate({ action: "create", board: { name: "theBoard", postIt: { id: "1", text: "text" } } });
+      validator.validate({ action: "create", board: { name: "theBoard", post_it: { id: "1", text: "text" } } });
   });
   
 });

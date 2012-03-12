@@ -41,7 +41,7 @@ var messageValidator = function(routes) {
   };
 
   var hasNoPostItIn = function(message) {
-    return !message.board.postIt;
+    return !message.board.post_it;
   };
 
   var validate = function(message) {

@@ -29,7 +29,7 @@ var uiAdapter = function(sender) {
     makeDraggable(element, postIt);
 
     element.find('.delete').click(function() {
-      sender.send({action: "remove", board: {name: "demo", postIt: postIt}});
+      sender.send({action: "remove", board: {name: "demo", post_it: postIt}});
     });
     return element;
   };
@@ -59,7 +59,7 @@ var uiAdapter = function(sender) {
     postIt.left = offset.left;
     postIt.top = offset.top;
 
-    sender.send({action: "update", board: { name: 'demo', postIt: postIt} });
+    sender.send({action: "update", board: { name: 'demo', post_it: postIt} });
   };
 
   var remove = function (postIt) {

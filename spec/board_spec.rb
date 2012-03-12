@@ -28,4 +28,35 @@ describe "A Board", do
     another_board.errors.messages.should include({:name=>["has already been taken"]})
   end
 
+  context "post-its" do
+    it "can be created from a hash" do
+      post_it = {"id" => "1", "text" => "some text"}
+      @board.create_post_it post_it
+
+      @board.should have(1).post_it
+      @board.post_its.first.id.should == "1"
+      @board.post_its.first.text.should == "some text"
+    end
+
+    it "can be updated from a hash" do
+      post_it_to_update = {"id" => "1", "text" => "updated text"}
+      @board.post_its << (PostIt.new :id => "1", :text => "original text")
+
+      @board.update_post_it post_it_to_update
+
+      @board.should have(1).post_it
+      @board.post_its.first.id.should == "1"
+      @board.post_its.first.text.should == "updated text"
+    end
+
+    it "can be removed using a hash" do
+      post_it_to_remove = {"id" => "1"}
+      @board.post_its << (PostIt.new :id => "1", :text => "original text")
+
+      @board.remove_post_it post_it_to_remove
+
+      @board.should have(0).post_its
+    end
+  end
+
 end

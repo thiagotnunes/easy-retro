@@ -13,12 +13,12 @@ describe BoardListener, do
   end
 
   it "should create a post it" do
-    third_post_it = PostIt.new :id => 3, :text => "third text"
+    third_post_it = {"id" => "3", "text" => "third text"}
     message = {
       "channel" => "/board",
       "data" => {
         "action" => "create",
-        "board" => { "name" => "theBoard", "postIt" => third_post_it }
+        "board" => { "name" => "theBoard", "post_it" => third_post_it }
       }
     }
 
@@ -28,16 +28,16 @@ describe BoardListener, do
     updated_board = Board.find_by_name "theBoard"
 
     updated_board.post_its.should have(3).items
-    updated_board.post_its.third.should == third_post_it
+    updated_board.post_its.third.should == PostIt.new(third_post_it)
   end
 
   it "should update a post it" do
-    post_it_to_update = PostIt.new :id => 2, :text => "updated text"
+    post_it_to_update = {"id" => "2", "text" => "updated text"}
     message = {
       "channel" => "/board",
       "data" => {
         "action" => "update",
-        "board" => { "name" => "theBoard", "postIt" => post_it_to_update }
+        "board" => { "name" => "theBoard", "post_it" => post_it_to_update }
       }
     }
 
@@ -47,7 +47,7 @@ describe BoardListener, do
     updated_board = Board.find_by_name "theBoard"
 
     updated_board.post_its.should have(2).items
-    updated_board.post_its.second.should == post_it_to_update
+    updated_board.post_its.second.should == PostIt.new(post_it_to_update)
   end
 
   it "should remove a post it" do
@@ -55,7 +55,7 @@ describe BoardListener, do
       "channel" => "/board",
       "data" => {
         "action" => "remove",
-        "board" => { "name" => "theBoard", "postIt" => some_text_post_it }
+        "board" => { "name" => "theBoard", "post_it" => some_text_post_it }
       }
     }
 
