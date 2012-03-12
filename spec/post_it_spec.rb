@@ -36,7 +36,11 @@ describe "A PostIt", do
     end
 
     it "should not be anything crazy" do
-      (PostIt.new :id => "1", :group => "crazy").should_not be_valid
+      post_it = PostIt.new :id => "1", :group => "crazy"
+
+      post_it.should_not be_valid
+      post_it.errors.should have(1).messages
+      post_it.errors.messages.should include({:group=>["is not included in the list"]})
     end
   end
 
