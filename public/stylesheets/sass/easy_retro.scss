@@ -1,10 +1,10 @@
 $post_it_side: 200px;
 $well_color: #A4EAAE;
-$not_so_well_color: #F6FAAF;
+$not_so_well_color: #FFFDB5;
 $action_item_color: #AFE0FA;
 $bad_color: #FF5F5F;
 $glue_effect_color:#FFF;
-$pen_color: #000;
+$pen_color: #444;
 $post_it_font_size: 12px;
 
 @font-face {
@@ -33,7 +33,7 @@ $post_it_font_size: 12px;
 
 @mixin post-it-color($color) {
   background-color: rgba($color, 0.95);
-  color: mix($color, $pen_color);
+  color: $pen_color;
 
   .header {
     background-color: darken($color, 10%);

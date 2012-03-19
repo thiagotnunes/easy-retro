@@ -7,7 +7,6 @@ use Faye::RackAdapter, :mount      => '/faye',
                        :extensions => [BoardListener.new()]
 
 require 'sass/plugin/rack'
-
 use Sass::Plugin::Rack
 
 run EasyRetroApp
