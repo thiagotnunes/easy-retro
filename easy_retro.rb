@@ -30,4 +30,15 @@ class EasyRetroApp < Sinatra::Base
     Board.find_by_name(name).to_json
   end
 
+  post '/board/:name/post_it' do |name|
+    board = Board.find_by_name(name)
+
+    post_it = PostIt.new(:text => params[:text], :group => params[:group], :left => params[:left], :top => params[:top])
+    board.post_its << post_it
+    board.save
+
+    content_type :json
+    post_it.to_json
+  end
+
 end
