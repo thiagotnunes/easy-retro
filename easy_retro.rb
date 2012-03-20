@@ -19,7 +19,10 @@ class EasyRetroApp < Sinatra::Base
   post '/board' do
     redirect "/board/#{params['name']}" if Board.find_by_name(params['name'])
 
-    Board.create(:name => params['name'], :post_its => [])
+    status 201
+    content_type :json
+    board = Board.create(:name => params['name'], :post_its => [])
+    board.to_json
   end
 
   put '/board' do
