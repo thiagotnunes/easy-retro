@@ -54,4 +54,15 @@ describe "The EasyRetro app", :type => :api do
     post_it.left.should == 120
     post_it.group.should == "well"
   end
+
+  it "should return a json representing a board's post-it when GET by id" do
+    post_it = PostIt.new :group => "well", :text => "some_text", :left => "414", :top => "141"
+    Board.create :name => "theBoard", :post_its => [post_it]
+
+    get "/board/theBoard/post_it/#{post_it.id}", :format => :json
+
+    last_response.status.should == 200
+    last_response.content_type.should match "json"
+    last_response.body.should =~ /\{\"group\":\"well\",\"id\":\"\w+\",\"left\":414,\"text\":\"some_text\",\"top\":141\}/
+  end
 end

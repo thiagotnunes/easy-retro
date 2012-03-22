@@ -45,4 +45,11 @@ class EasyRetroApp < Sinatra::Base
     post_it.to_json
   end
 
+  get '/board/:name/post_it/:id' do |name, id|
+    content_type :json
+    status 200
+    board = Board.find_by_name(name)
+    board.post_its.select {|p| p.id.to_s == id}.first.to_json
+  end
+
 end
