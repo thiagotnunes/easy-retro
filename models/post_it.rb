@@ -5,11 +5,10 @@ class PostIt
 
   GROUPS = ["bad", "not_so_well", "well", "action_item"]
 
-  key :id, String, :required => true, :numeric => true
   key :group, String, :in => GROUPS
   key :text, String
-  key :left, Integer
-  key :top, Integer
+  key :left, Integer, :numeric => true
+  key :top, Integer, :numeric => true
 
   embedded_in :board
 

@@ -39,19 +39,21 @@ describe "A Board", do
     end
 
     it "can be updated from a hash" do
-      post_it_to_update = {"id" => "1", "text" => "updated text"}
-      @board.post_its << (PostIt.new :id => "1", :text => "original text")
+      post_it = PostIt.new :left => "414", :top => "414", :group => "well", :text => "original text"
+      post_it_to_update = {"id" => post_it.id, "text" => "updated text"}
+      @board.post_its << post_it
 
       @board.update_post_it post_it_to_update
 
       @board.should have(1).post_it
-      @board.post_its.first.id.should == "1"
+      @board.post_its.first.id.should == post_it.id
       @board.post_its.first.text.should == "updated text"
     end
 
     it "can be removed using a hash" do
-      post_it_to_remove = {"id" => "1"}
-      @board.post_its << (PostIt.new :id => "1", :text => "original text")
+      post_it = PostIt.new :left => "414", :top => "414", :group => "well", :text => "original text"
+      post_it_to_remove = {"id" => post_it.id}
+      @board.post_its << post_it
 
       @board.remove_post_it post_it_to_remove
 
