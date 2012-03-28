@@ -49,7 +49,7 @@ class EasyRetroApp < Sinatra::Base
     content_type :json
     status 200
     board = Board.find_by_name(name)
-    board.post_its.select {|p| p.id.to_s == id}.first.to_json
+    board.post_its.find(id).to_json
   end
 
 end
