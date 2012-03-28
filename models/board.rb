@@ -41,5 +41,13 @@ class Board
 
     post_it
   end
+
+  def delete_post_it id
+    post_it = self.post_its.find(id)
+    self.post_its.delete_if {|p| p.id == post_it.id}
+    self.save
+
+    post_it
+  end
 end
 

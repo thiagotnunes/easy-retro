@@ -47,4 +47,12 @@ class EasyRetroApp < Sinatra::Base
     board.post_its.find(id).to_json
   end
 
+  delete '/board/:name/post_it/:id' do |name, id|
+    status 200
+
+    board = Board.find_by_name(name)
+    post_it = board.delete_post_it id
+    post_it.to_json
+  end
+
 end

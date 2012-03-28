@@ -65,4 +65,19 @@ describe "The EasyRetro app", :type => :api do
     last_response.content_type.should match "json"
     last_response.body.should =~ /\{\"group\":\"well\",\"id\":\"\w+\",\"left\":414,\"text\":\"some_text\",\"top\":141\}/
   end
+
+  it "should delete a existing post-it and return a json representation when DELETE by id" do
+    post_it = PostIt.new :group => "well", :text => "some_text", :left => "414", :top => "141"
+    Board.create :name => "theBoard", :post_its => [post_it]
+
+    delete "/board/theBoard/post_it/#{post_it.id}", :format => :json
+
+    last_response.status.should == 200
+    last_response.content_type.should match "json"
+    last_response.body.should =~ /\{\"group\":\"well\",\"id\":\"\w+\",\"left\":414,\"text\":\"some_text\",\"top\":141\}/
+
+    board = Board.find_by_name("theBoard")
+    board.should have(0).post_its
+    board.post_its.find(post_it.id).should_not be
+  end
 end
