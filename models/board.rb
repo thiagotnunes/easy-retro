@@ -29,5 +29,17 @@ class Board
   def remove_post_it post_it
     self.post_its.delete_if {|p| p.id == post_it["id"]}
   end
+
+  def add_post_it_from params
+    post_it = PostIt.new  :text => params['text'],
+                          :top => params['top'],
+                          :left => params['left'],
+                          :group => params['group']
+
+    self.post_its << post_it
+    self.save
+
+    post_it
+  end
 end
 
