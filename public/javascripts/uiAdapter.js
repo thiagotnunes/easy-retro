@@ -29,7 +29,12 @@ var uiAdapter = function(sender) {
     makeDraggable(element, postIt);
 
     element.find('.delete').click(function() {
-      sender.send({action: "remove", board: {name: "demo", post_it: postIt}});
+      jQuery.ajax({
+        type: "DELETE",
+        url: "/board/demo/post_it/" + postIt.id,
+        success: sender.send({action: "removed", board: {name: "demo", post_it: postIt}}),
+        dataType: "json"
+        });
     });
     return element;
   };
@@ -62,7 +67,7 @@ var uiAdapter = function(sender) {
     sender.send({action: "update", board: { name: 'demo', post_it: postIt} });
   };
 
-  var remove = function (postIt) {
+  var removed = function (postIt) {
     var element = getFromPage(postIt);
     element.fadeOut(function() {element.remove()}); 
   };
@@ -70,6 +75,6 @@ var uiAdapter = function(sender) {
   return {
     create: create,
     update: update,
-    remove: remove
+    removed: removed
   };
 };

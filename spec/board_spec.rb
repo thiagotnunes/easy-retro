@@ -50,12 +50,11 @@ describe "A Board", do
       @board.post_its.first.text.should == "updated text"
     end
 
-    it "can be removed using a hash" do
+    it "can delete" do
       post_it = PostIt.new :left => "414", :top => "414", :group => "well", :text => "original text"
-      post_it_to_remove = {"id" => post_it.id}
       @board.post_its << post_it
 
-      @board.remove_post_it post_it_to_remove
+      @board.delete post_it
 
       @board.should have(0).post_its
     end

@@ -32,18 +32,18 @@ describe("ui adapter", function() {
     expect($('[id=123]').length).toEqual(1);
   });
 
-  it("should send a remove message when clicking remove button", function() {
+  it("should send a removed message when clicking remove button", function() {
     var postIt = {id: '123', text: 'some text'};
     var element = adapter.create(postIt);
     element.find('.delete').click();
-    var expectedMessage =  { action: 'remove', board: {name: 'demo', post_it: {id: '123', text: 'some text'}}};
+    var expectedMessage =  { action: 'removed', board: {name: 'demo', post_it: {id: '123', text: 'some text'}}};
     expect(sender.send).toHaveBeenCalledWith(expectedMessage);
   });
 
   it("should remove a post it", function() {
     var postIt = {id: 123, text: 'some text'};
     adapter.create(postIt);
-    adapter.remove({id: "123"});
+    adapter.removed({id: "123"});
     expect($("#123")).not.toExist();
   });
 });

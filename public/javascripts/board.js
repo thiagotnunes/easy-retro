@@ -6,7 +6,7 @@ var board = function() {
   var router = messageRouter(messageValidator(), {
     create: adapter.create,
     update: adapter.update,
-    remove: adapter.remove
+    removed: adapter.removed
   });
 
   var success = function(data) {
