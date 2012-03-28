@@ -80,4 +80,12 @@ describe "The EasyRetro app", :type => :api do
     board.should have(0).post_its
     board.post_its.find(post_it.id).should_not be
   end
+
+  it "should return a 404 NOT_FOUND when the post-it to delete does not exist" do
+    Board.create :name => "theBoard", :post_its => []
+
+    delete "/board/theBoard/post_it/123", :format => :json
+
+    last_response.status.should == 404
+  end
 end

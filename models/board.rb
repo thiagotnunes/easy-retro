@@ -30,7 +30,7 @@ class Board
     self.post_its.delete_if {|p| p.id == post_it["id"]}
   end
 
-  def add_post_it_from params
+  def add_using params
     post_it = PostIt.new  :text => params['text'],
                           :top => params['top'],
                           :left => params['left'],
@@ -42,12 +42,13 @@ class Board
     post_it
   end
 
-  def delete_post_it id
-    post_it = self.post_its.find(id)
+  def find id
+    self.post_its.find(id)
+  end
+
+  def delete post_it
     self.post_its.delete_if {|p| p.id == post_it.id}
     self.save
-
-    post_it
   end
 end
 

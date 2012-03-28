@@ -36,7 +36,7 @@ class EasyRetroApp < Sinatra::Base
     status 201
 
     board = Board.find_by_name(name)
-    post_it = board.add_post_it_from params
+    post_it = board.add_using params
     post_it.to_json
   end
 
@@ -51,7 +51,11 @@ class EasyRetroApp < Sinatra::Base
     status 200
 
     board = Board.find_by_name(name)
-    post_it = board.delete_post_it id
+    post_it = board.find id
+
+    return not_found if post_it == nil
+
+    board.delete post_it
     post_it.to_json
   end
 
