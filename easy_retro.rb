@@ -55,7 +55,7 @@ class EasyRetroApp < Sinatra::Base
     status 200
 
     board = Board.find_by_name(name)
-    post_it = board.post_its.find(id)
+    post_it = board.find id
 
     return not_found if post_it == nil
 
@@ -71,7 +71,7 @@ class EasyRetroApp < Sinatra::Base
 
     return not_found if post_it == nil
 
-    board.delete post_it
+    board.pull(:post_its => {:_id => post_it.id})
     post_it.to_json
   end
 

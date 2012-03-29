@@ -50,14 +50,6 @@ describe "A Board", do
       @board.post_its.first.text.should == "updated text"
     end
 
-    it "can delete" do
-      post_it = PostIt.new :left => "414", :top => "414", :group => "well", :text => "original text"
-      @board.post_its << post_it
-
-      @board.delete post_it
-
-      @board.should have(0).post_its
-    end
   end
 
 end
