@@ -59,7 +59,7 @@ class EasyRetroApp < Sinatra::Base
 
     return not_found if post_it == nil
 
-    post_it = board.replace(post_it, params)
+    post_it.update_attributes!(params[:post_it])
     post_it.to_json
   end
 
