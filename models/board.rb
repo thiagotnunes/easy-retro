@@ -26,11 +26,11 @@ class Board
     end
   end
 
-  def add_using params
-    post_it = PostIt.new  :text => params['text'],
-                          :top => params['top'],
-                          :left => params['left'],
-                          :group => params['group']
+  def add_using post_it_hash
+    post_it = PostIt.new  :text => post_it_hash['text'],
+                          :top => post_it_hash['top'],
+                          :left => post_it_hash['left'],
+                          :group => post_it_hash['group']
 
     self.post_its << post_it
     self.save

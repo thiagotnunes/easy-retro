@@ -38,7 +38,7 @@ describe "The EasyRetro app", :type => :api do
     Board.create :name => "theBoard"
 
     post "/board/theBoard/post_it",
-      params = { 'text' => "some text", 'top' => 50, 'left' => 120, 'group' => 'well' },
+      params = { 'post_it' => { 'text' => "some text", 'top' => 50, 'left' => 120, 'group' => 'well' }},
       :format => :json
 
     last_response.status.should == 201

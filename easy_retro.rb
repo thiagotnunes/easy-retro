@@ -36,7 +36,7 @@ class EasyRetroApp < Sinatra::Base
     status 201
 
     board = Board.find_by_name(name)
-    post_it = board.add_using params
+    post_it = board.add_using params[:post_it]
     post_it.to_json
   end
 
