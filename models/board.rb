@@ -32,8 +32,7 @@ class Board
                           :left => post_it_hash['left'],
                           :group => post_it_hash['group']
 
-    self.post_its << post_it
-    self.save
+    self.push :post_its => post_it.to_mongo
 
     post_it
   end

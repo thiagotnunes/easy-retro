@@ -71,7 +71,7 @@ class EasyRetroApp < Sinatra::Base
 
     return not_found if post_it == nil
 
-    board.pull(:post_its => {:_id => post_it.id})
+    board.pull :post_its => {:_id => post_it.id}
     post_it.to_json
   end
 
