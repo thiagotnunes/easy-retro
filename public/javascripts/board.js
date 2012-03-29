@@ -2,9 +2,8 @@ var board = function() {
 
   var sender = postItSender();
   var adapter = uiAdapter(sender);
-  var builder = postItBuilder();
   var router = messageRouter(messageValidator(), {
-    create: adapter.create,
+    created: adapter.create,
     updated: adapter.update,
     removed: adapter.remove
   });
@@ -23,10 +22,13 @@ var board = function() {
   sender.subscribe(router.route);
 
   var newPostIt = function(group) {
-    var postIt = builder.create({ group: group });
-    var message = { action: "create", board: { name: "demo", post_it: postIt } };
-
-    sender.send(message);
+    jQuery.ajax({
+      type: "POST",
+      data: { post_it: { group: group } },
+      url: "/board/demo/post_it",
+      success: function(data) { sender.send({action: "created", board: {name: "demo", post_it: data}}) },
+      dataType: "json"
+    });
   };
 
   var bindButtons = function() {

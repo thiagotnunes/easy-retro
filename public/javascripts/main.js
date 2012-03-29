@@ -8,7 +8,6 @@
               "board",
               "uiAdapter",
               "postItSender",
-              "postItBuilder",
               "messageValidator",
               "messageRouter"];
 
