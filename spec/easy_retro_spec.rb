@@ -66,6 +66,14 @@ describe "The EasyRetro app", :type => :api do
     last_response.body.should =~ /\{\"group\":\"well\",\"id\":\"\w+\",\"left\":414,\"text\":\"some_text\",\"top\":141\}/
   end
 
+  it "should return a 404 NOT_FOUND when the post-it to GET does not exist" do
+    Board.create :name => "theBoard", :post_its => []
+
+    get "/board/theBoard/post_it/123", :format => :json
+
+    last_response.status.should == 404
+  end
+
   it "should delete a existing post-it and return a json representation when DELETE by id" do
     post_it = PostIt.new :group => "well", :text => "some_text", :left => "414", :top => "141"
     Board.create :name => "theBoard", :post_its => [post_it]
