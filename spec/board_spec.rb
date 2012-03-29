@@ -38,18 +38,6 @@ describe "A Board", do
       @board.post_its.first.text.should == "some text"
     end
 
-    it "can be updated from a hash" do
-      post_it = PostIt.new :left => "414", :top => "414", :group => "well", :text => "original text"
-      post_it_to_update = {"id" => post_it.id, "text" => "updated text"}
-      @board.post_its << post_it
-
-      @board.update_post_it post_it_to_update
-
-      @board.should have(1).post_it
-      @board.post_its.first.id.should == post_it.id
-      @board.post_its.first.text.should == "updated text"
-    end
-
   end
 
 end

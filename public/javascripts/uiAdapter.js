@@ -64,10 +64,17 @@ var uiAdapter = function(sender) {
     postIt.left = offset.left;
     postIt.top = offset.top;
 
-    sender.send({action: "update", board: { name: 'demo', post_it: postIt} });
+    jQuery.ajax({
+      type: "PUT",
+      url: "/board/demo/post_it/" + postIt.id,
+      data: { post_it: postIt },
+      success: sender.send({action: "updated", board: {name: "demo", post_it: postIt}}),
+      dataType: "json"
+    });
+
   };
 
-  var removed = function (postIt) {
+  var remove = function (postIt) {
     var element = getFromPage(postIt);
     element.fadeOut(function() {element.remove()}); 
   };
@@ -75,6 +82,6 @@ var uiAdapter = function(sender) {
   return {
     create: create,
     update: update,
-    removed: removed
+    remove: remove
   };
 };

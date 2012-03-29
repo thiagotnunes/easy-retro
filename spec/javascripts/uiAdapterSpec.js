@@ -43,7 +43,7 @@ describe("ui adapter", function() {
   it("should remove a post it", function() {
     var postIt = {id: 123, text: 'some text'};
     adapter.create(postIt);
-    adapter.removed({id: "123"});
+    adapter.remove({id: "123"});
     expect($("#123")).not.toExist();
   });
 });
