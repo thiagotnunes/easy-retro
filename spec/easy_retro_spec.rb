@@ -66,10 +66,40 @@ describe "The EasyRetro app", :type => :api do
     last_response.body.should =~ /\{\"group\":\"well\",\"id\":\"\w+\",\"left\":414,\"text\":\"some_text\",\"top\":141\}/
   end
 
-  it "should return a 404 NOT_FOUND when the post-it to GET does not exist" do
+  it "should return a 404 NOT_FOUND when GET a post-it that do not exist" do
     Board.create :name => "theBoard", :post_its => []
 
     get "/board/theBoard/post_it/123", :format => :json
+
+    last_response.status.should == 404
+  end
+
+  it "should update a post-it when PUT to the a board's post-its using id" do
+    post_it = PostIt.new :group => "well", :text => "some_text", :left => "414", :top => "141"
+    Board.create :name => "theBoard", :post_its => [post_it]
+
+    put "/board/theBoard/post_it/#{post_it.id}",
+      params = { 'post_it' => {'text' => "some text", 'top' => 50, 'left' => 120, 'group' => 'well' }},
+      :format => :json
+
+    last_response.status.should == 200
+    last_response.content_type.should match "json"
+    last_response.body.should =~ /\{\"group\":\"well\",\"id\":\"#{post_it.id}\",\"left\":120,\"text\":\"some text\",\"top\":50\}/
+
+    board = Board.find_by_name("theBoard")
+    board.should have(1).post_it
+
+    post_it = board.post_its.first
+    post_it.text.should == "some text"
+    post_it.top.should == 50
+    post_it.left.should == 120
+    post_it.group.should == "well"
+  end
+
+  it "should return a 404 NOT_FOUND when updating PUT a the post-it that does not exist" do
+    Board.create :name => "theBoard", :post_its => []
+
+    put "/board/theBoard/post_it/123", :format => :json
 
     last_response.status.should == 404
   end

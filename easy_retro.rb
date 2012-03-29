@@ -44,10 +44,22 @@ class EasyRetroApp < Sinatra::Base
     status 200
 
     board = Board.find_by_name(name)
+    post_it = board.find id
+
+    return not_found if post_it == nil
+
+    post_it.to_json
+  end
+
+  put '/board/:name/post_it/:id' do |name, id|
+    status 200
+
+    board = Board.find_by_name(name)
     post_it = board.post_its.find(id)
 
     return not_found if post_it == nil
 
+    post_it = board.replace(post_it, params)
     post_it.to_json
   end
 

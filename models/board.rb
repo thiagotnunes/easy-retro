@@ -42,6 +42,16 @@ class Board
     self.post_its.find(id)
   end
 
+  def replace post_it, params
+    post_it.update_attributes(params[:post_it])
+
+    self.post_its.delete_if {|p| p.id == post_it.id}
+    self.post_its << post_it
+    self.save
+
+    post_it
+  end
+
   def delete post_it
     self.post_its.delete_if {|p| p.id == post_it.id}
     self.save
