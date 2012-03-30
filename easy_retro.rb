@@ -19,8 +19,7 @@ class EasyRetroApp < Sinatra::Base
 
   get '/' do
     content_type :html
-    @board_name = "demo"
-    slim :board
+    slim :board, :locals => { :board_name => "demo" }
   end
 
   post '/board' do
