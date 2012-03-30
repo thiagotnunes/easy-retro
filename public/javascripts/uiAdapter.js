@@ -1,4 +1,4 @@
-var uiAdapter = function(sender) {
+var uiAdapter = function(name, sender) {
 
   var draggable = require("draggable");
 
@@ -31,8 +31,8 @@ var uiAdapter = function(sender) {
     element.find('.delete').click(function() {
       jQuery.ajax({
         type: "DELETE",
-        url: "/board/demo/post_it/" + postIt.id,
-        success: sender.send({action: "removed", board: {name: "demo", post_it: postIt}}),
+        url: "/board/" + name + "/post_it/" + postIt.id,
+        success: sender.send({action: "removed", board: {name: name, post_it: postIt}}),
         dataType: "json"
         });
     });
@@ -66,9 +66,9 @@ var uiAdapter = function(sender) {
 
     jQuery.ajax({
       type: "PUT",
-      url: "/board/demo/post_it/" + postIt.id,
+      url: "/board/" + name + "/post_it/" + postIt.id,
       data: { post_it: postIt },
-      success: sender.send({action: "updated", board: {name: "demo", post_it: postIt}}),
+      success: sender.send({action: "updated", board: {name: name, post_it: postIt}}),
       dataType: "json"
     });
 

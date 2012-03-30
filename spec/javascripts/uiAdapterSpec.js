@@ -1,11 +1,11 @@
-describe("ui adapter", function() {
+describe("UI Adapter", function() {
 
   var adapter; 
   var sender;
 
   beforeEach(function() {
     sender = { send: jasmine.createSpy() };
-    adapter = uiAdapter(sender);
+    adapter = uiAdapter("test", sender);
     loadFixtures("board.html");
   });
 
@@ -36,7 +36,7 @@ describe("ui adapter", function() {
     var postIt = {id: '123', text: 'some text'};
     var element = adapter.create(postIt);
     element.find('.delete').click();
-    var expectedMessage =  { action: 'removed', board: {name: 'demo', post_it: {id: '123', text: 'some text'}}};
+    var expectedMessage =  { action: 'removed', board: {name: 'test', post_it: {id: '123', text: 'some text'}}};
     expect(sender.send).toHaveBeenCalledWith(expectedMessage);
   });
 

@@ -13,7 +13,7 @@
 
   var callback = function() {
                 $(document).ready(function() {
-                  var retroBoard = board();
+                  var retroBoard = board("demo");
                   retroBoard.bindButtons();
                 });
               };

@@ -18,19 +18,19 @@ describe("Sender", function() {
         };
       }
     };
-    sender = postItSender();
+    sender = postItSender("test");
   });
 
   it("should subscribe to board channel", function() {
     sender.subscribe(updateCallback);
 
-    expect(subscribe).toHaveBeenCalledWith("/board", updateCallback);
+    expect(subscribe).toHaveBeenCalledWith("/board/test", updateCallback);
   });
 
   it("should send a message to the client", function() {
     var postIt = {id: 123};
     sender.send(postIt);
-    expect(publish).toHaveBeenCalledWith("/board", postIt);
+    expect(publish).toHaveBeenCalledWith("/board/test", postIt);
   });
 
 });
