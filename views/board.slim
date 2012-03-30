@@ -2,9 +2,9 @@ doctype html
 html
   head
     link rel="stylesheet" href="stylesheets/easy_retro.css" type="text/css"
-    title Easy-Retro
+    title Easy-Retro: #{@board_name}
     javascript:
-      var boardName = "demo";
+      var boardName = "#{@board_name}";
     script{type="text/javascript" data-main="javascripts/main" src="javascripts/require.js"}
   body
     a href="http://github.com/thiagotnunes/easy-retro"

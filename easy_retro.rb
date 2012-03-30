@@ -19,6 +19,7 @@ class EasyRetroApp < Sinatra::Base
 
   get '/' do
     content_type :html
+    @board_name = "demo"
     slim :board
   end
 
