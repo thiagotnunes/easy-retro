@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'slim'
 require 'sinatra/base'
 require 'sinatra/reloader'
 
@@ -17,7 +18,8 @@ class EasyRetroApp < Sinatra::Base
   end
 
   get '/' do
-    redirect '/index.html'
+    content_type :html
+    slim :board
   end
 
   post '/board' do

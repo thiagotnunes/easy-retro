@@ -2,8 +2,12 @@ source "http://rubygems.org"
 
 gem 'sinatra'
 gem 'rake'
+
 gem 'sass'
+gem 'slim'
+
 gem 'faye'
+
 gem 'mongo'
 gem 'mongodb'
 gem 'mongo_mapper'

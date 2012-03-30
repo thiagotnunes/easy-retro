@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    link rel="stylesheet" href="stylesheets/easy_retro.css" type="text/css"
+    title Easy-Retro
+    javascript:
+      var boardName = "demo";
+    script{type="text/javascript" data-main="javascripts/main" src="javascripts/require.js"}
+  body
+    a href="http://github.com/thiagotnunes/easy-retro"
+    menu
+      span.handwritten.big Add
+      input#add_well.add.well{type="button"}
+      input#add_not_so_well.add.not_so_well{type="button"}
+      input#add_bad.add.bad{type="button"}
+      input#add_action_item.add.action_item{type="button"}
+    #board
+      #base_post_it.post_it.hidden.handwritten.big
+        .header
+        .content{contenteditable="true"}
+        .footer
+          a.hidden href="#"
+            img.vote.icon{src="images/thumbs_up.png" alt="vote up"}
+          a.hidden href="#"
+            img.list.icon{src="images/list_items.png" alt="list item"}
+          a.hidden href="#"
+            img.edit.icon{src="images/edit.png" alt="edit"}
+          a href="#"
+            img.delete.icon{src="images/trash.png" alt="delete"}
