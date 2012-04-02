@@ -28,16 +28,4 @@ describe "A Board", do
     another_board.errors.messages.should include({:name=>["has already been taken"]})
   end
 
-  context "post-its" do
-    it "can be created from a hash" do
-      post_it = {"id" => "1", "text" => "some text"}
-      @board.create_post_it post_it
-
-      @board.should have(1).post_it
-      @board.post_its.first.id.should == "1"
-      @board.post_its.first.text.should == "some text"
-    end
-
-  end
-
 end
