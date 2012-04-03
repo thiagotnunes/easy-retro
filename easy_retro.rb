@@ -22,6 +22,12 @@ class EasyRetroApp < Sinatra::Base
     slim :board, :locals => { :board_name => "demo" }
   end
 
+  get '/:name' do |name|
+    content_type :html
+
+    slim :board, :locals => { :board_name => name}
+  end
+
   post '/board' do
     status 201
 
