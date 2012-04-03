@@ -1,7 +1,6 @@
 require 'sinatra'
 require 'slim'
 require 'sinatra/base'
-require 'sinatra/reloader'
 
 Dir["./lib/**/*.rb"].each { |helper| require helper }
 Dir["./models/**/*.rb"].each { |model| require model }
@@ -10,6 +9,7 @@ set :root, File.dirname(__FILE__)
 
 class EasyRetroApp < Sinatra::Base
   configure :development do
+    require 'sinatra/reloader'
     register Sinatra::Reloader
   end
 
