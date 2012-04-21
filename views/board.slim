@@ -8,6 +8,7 @@ html
     script{type="text/javascript" data-main="javascripts/main" src="javascripts/require.js"}
   body
     a href="http://github.com/thiagotnunes/easy-retro"
+      img.fork-me-flag{src="../images/fork_me.png" alt="Fork me on GitHub"}
     menu
       span.handwritten.big Add
       input#add_well.add.well{type="button"}
@@ -17,13 +18,12 @@ html
     #board
       #base_post_it.post_it.hidden.handwritten.big
         .header
+          a.delete.icon{href="#" alt="delete"}
         .content{contenteditable="true"}
         .footer
-          a.hidden href="#"
-            img.vote.icon{src="images/thumbs_up.png" alt="vote up"}
-          a.hidden href="#"
-            img.list.icon{src="images/list_items.png" alt="list item"}
-          a.hidden href="#"
-            img.edit.icon{src="images/edit.png" alt="edit"}
-          a href="#"
-            img.delete.icon{src="images/trash.png" alt="delete"}
+          a.hidden.vote-up.icon{href="#" alt="vote up"}
+          a.hidden.vote-down.icon{href="#" alt="vote down"}
+          a.hidden.actions.icon{href="#" alt="actions"}
+          a.hidden.notes.icon{href="#" alt="notes"}
+          a.hidden.responsible.icon{href="#" alt="responsible"}
+          a.hidden.tags.icon{href="#" alt="tags"}

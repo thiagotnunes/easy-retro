@@ -40,6 +40,11 @@ $post_it_font_size: 12px;
     border-bottom: 2px solid rgba($color, 0.5);
     &:hover {
       background-color: darken($color, 25%);
+      .icon {
+        &:hover {
+          opacity: 0.7;
+        }
+      }
     }
   }
 }
@@ -84,10 +89,14 @@ body {
   @include create-box-shadow;
 
   .header {
-    height: 20px;
-    width: $post_it_side;
+    height: 17px;
+    width: $post_it_side -10px;
     font-weight: bold;
     cursor: move;
+    padding: 4px 4px 0 5px;
+    .icon {
+      opacity: 0;
+    }
   }
 
   .content {
@@ -101,9 +110,21 @@ body {
   }
 
   .footer {
+    opacity: 0;
     height: 20px;
-    width: $post_it_side;
-    padding: 0 2px 0 2px;
+    width: $post_it_side -10px;
+    padding: 5px 5px 0 5px;
+  }
+
+  &:hover {
+    .header {
+      .icon {
+        opacity: 0.3;
+      }
+    }
+    .footer {
+      opacity: 1;
+    }
   }
 }
 
@@ -145,41 +166,59 @@ menu {
   }
 }
 
-.hidden {
-  display : none;
-}
-
 .icon {
   float: left;
   opacity: 0.3;
   &:hover {
     opacity: 0.7;
   }
-}
-
-.vote {
-  @include flip-horizontally;
-  height: 25px;
-  width: 25px;
-  margin-top: 3px;
-  margin-right: -5px;
-}
-
-.list {
-  height: 25px;
-  width: 20px;
-  margin-top: 3px;
-}
-
-.edit {
-  height: 20px;
-  width: 20px;
-  margin-top: 7px;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  vertical-align: text-top;
+  background-image: url("../images/glyphicons-halflings.png");
+  background-position: 14px 14px;
+  background-repeat: no-repeat;
+  *margin-right: .3em;
 }
 
 .delete {
-  height: 15px;
-  width: 15px;
-  margin-top: 8px;
-  margin-left: 1px;
+  background-position: -312px 0;
+  float: left;
+}
+
+.vote-up {
+  background-position: -289px -96px;
+}
+
+.vote-down {
+  background-position: -312px -96px;
+}
+
+.actions {
+  background-position: -360px -48px;
+}
+
+.notes {
+  background-position: 0 -72px;
+}
+
+.responsible {
+  background-position: -168px 0;
+}
+
+.tags {
+  background-position: 0 -48px;
+}
+
+.hidden {
+  display : none;
+}
+
+.fork-me-flag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
 }
