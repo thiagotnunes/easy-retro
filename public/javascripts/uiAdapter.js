@@ -16,8 +16,8 @@ var uiAdapter = function(name, sender) {
   };
 
   var setHeaderEvents = function(header) {
-    header.mousedown(function() { header.parent().toggleClass('moving'); })
-    header.mouseup(function() { header.parent().toggleClass('moving'); })
+    header.mousedown(function() { header.parent().addClass('moving'); })
+    header.mouseup(function() { header.parent().removeClass('moving'); })
   };
 
   var setContent= function(content, postIt) {
