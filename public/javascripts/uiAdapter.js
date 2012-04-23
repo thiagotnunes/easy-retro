@@ -15,13 +15,21 @@ var uiAdapter = function(name, sender) {
     return $('#' + postIt.id);
   };
 
+  var setHeaderEvents = function(header) {
+    header.mousedown(function() { header.parent().toggleClass('moving'); })
+    header.mouseup(function() { header.parent().toggleClass('moving'); })
+  };
+
+  var setContent= function(content, postIt) {
+    content.blur(function() { handleTextChange(postIt) });
+    content.html(postIt.text);
+  };
+
   var create = function(postIt) {
     var element = toHtml(postIt);
-    var content = element.children('.content');
+    setHeaderEvents(element.children('.header'));
+    setContent(element.children('.content'), postIt)
 
-    content.blur(function() { handleTextChange(postIt) });
-
-    element.children('.content').html(postIt.text);
     element.offset({left: postIt.left, top: postIt.top});
     element.show();
     $("#board").append(element);
