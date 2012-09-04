@@ -169,6 +169,21 @@ menu {
   span {
     vertical-align: bottom;
   }
+  .links {
+    float: right;
+    font-size: 15px;
+    margin-top: 10px;
+    a {
+      text-decoration: none;
+      color: $pen_color;
+      &:hover {
+        color: lighten($pen_color, 40%);
+      }
+      &:active {
+        color: lighten($pen_color, 20%);
+      }
+    }
+  }
 }
 
 .icon {
@@ -219,4 +234,32 @@ menu {
 
 .hidden {
   display : none;
+}
+
+section[role=terms] {
+  padding: 10px 150px;
+  line-height: 2.2em;
+  text-align: justify;
+  h2 {
+    font-size: 2em;
+  }
+  p {
+    font-size: 1.5em;
+  }
+  strong {
+    background: rgba(0,0,0,0.8);
+    padding: 2px;
+  }
+  strong:nth-child(1n) {
+    color: $well_color;
+  }
+  strong:nth-child(2n) {
+    color: $not_so_well_color;
+  }
+  strong:nth-child(3n) {
+    color: $action_item_color;
+  }
+  strong:nth-child(4n) {
+    color: $bad_color;
+  }
 }
