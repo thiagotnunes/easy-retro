@@ -22,7 +22,7 @@ Virtual Card Wall aimed for agile retrospectives
     $bundle exec rake start:development
 
 ## Mongo
-    
+
     $ mongod --dbpath /some/existing/dir
 
 ## Production
