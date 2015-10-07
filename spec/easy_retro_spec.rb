@@ -8,34 +8,34 @@ describe "The EasyRetro app", :type => :api do
 
       get "/theBoard"
 
-      last_response.status.should == 200
-      last_response.content_type.should match "html"
-      last_response.body.should include "<title>Easy-Retro: theBoard</title>"
-      last_response.body.should include "<script type=\"text/javascript\">var boardName = \"theBoard\";</script>"
+      expect(last_response.status).to eq(200)
+      expect(last_response.content_type).to match "html"
+      expect(last_response.body).to include("<title>Easy-Retro: theBoard</title>")
+      expect(last_response.body).to include("<script>var boardName = \"theBoard\";</script>")
     end
   end
 
   describe "when providing api for boards" do
     it "should create a board when POST a json with a name" do
-      post "/board", params = { 'name' => "theBoard" }, :format => :json
+      post "/board", { 'name' => "theBoard" }, :format => :json
 
-      last_response.status.should == 201
-      last_response.content_type.should match "json"
-      last_response.body.should =~ /\{\"id\":\"\w+\",\"name\":\"theBoard\",\"post_its\":\[\]\}/
+      expect(last_response.status).to eq(201)
+      expect(last_response.content_type).to match "json"
+      expect(last_response.body).to match(/\{\"id\":\"\w+\",\"name\":\"theBoard\",\"post_its\":\[\]\}/)
 
-      Board.all.should have(1).item
-      Board.find_by_name("theBoard").should be
+      expect(Board.all.size).to eq(1)
+      expect(Board.find_by_name("theBoard")).to be
     end
 
     it "should redirect to existing board when POST a json with a name already taken" do
       Board.create :name => "theBoard"
 
-      post "/board", params = { 'name' => "theBoard" }, :format => :json
+      post "/board", { 'name' => "theBoard" }, :format => :json
 
-      last_response.status.should == 303
+      expect(last_response.status).to eq(303)
 
-      Board.all.should have(1).item
-      Board.find_by_name("theBoard").should be
+      expect(Board.count).to eq(1)
+      expect(Board.find_by_name("theBoard")).to be
     end
 
     it "should return a json representing a board when GET by name" do
@@ -43,9 +43,9 @@ describe "The EasyRetro app", :type => :api do
 
       get "/board/theBoard", :format => :json
 
-      last_response.status.should == 200
-      last_response.content_type.should match "json"
-      last_response.body.should =~ /\{\"id\":\"\w+\",\"name\":\"theBoard\",\"post_its\":\[\]\}/
+      expect(last_response.status).to eq(200)
+      expect(last_response.content_type).to match "json"
+      expect(last_response.body).to match(/\{\"id\":\"\w+\",\"name\":\"theBoard\",\"post_its\":\[\]\}/)
     end
   end
 
@@ -54,21 +54,21 @@ describe "The EasyRetro app", :type => :api do
       Board.create :name => "theBoard"
 
       post "/board/theBoard/post_it",
-        params = { 'post_it' => { 'text' => "some text", 'top' => 50, 'left' => 120, 'group' => 'well' }},
+        { 'post_it' => { 'text' => "some text", 'top' => 50, 'left' => 120, 'group' => 'well' }},
         :format => :json
 
-      last_response.status.should == 201
-      last_response.content_type.should match "json"
-      last_response.body.should =~ /\{\"group\":\"well\",\"id\":\"\w+\",\"left\":120,\"text\":\"some text\",\"top\":50\}/
+      expect(last_response.status).to eq(201)
+      expect(last_response.content_type).to match("json")
+      expect(last_response.body).to match(/\{\"group\":\"well\",\"id\":\"\w+\",\"left\":120,\"text\":\"some text\",\"top\":50\}/)
 
       board = Board.find_by_name("theBoard")
-      board.should have(1).post_it
+      expect(board.post_its.size).to eq(1)
 
       post_it = board.post_its.first
-      post_it.text.should == "some text"
-      post_it.top.should == 50
-      post_it.left.should == 120
-      post_it.group.should == "well"
+      expect(post_it.text).to eq("some text")
+      expect(post_it.top).to eq(50)
+      expect(post_it.left).to eq(120)
+      expect(post_it.group).to eq("well")
     end
 
     it "should return a json representing a board's post-it when GET by id" do
@@ -77,9 +77,9 @@ describe "The EasyRetro app", :type => :api do
 
       get "/board/theBoard/post_it/#{post_it.id}", :format => :json
 
-      last_response.status.should == 200
-      last_response.content_type.should match "json"
-      last_response.body.should =~ /\{\"group\":\"well\",\"id\":\"\w+\",\"left\":414,\"text\":\"some_text\",\"top\":141\}/
+      expect(last_response.status).to eq(200)
+      expect(last_response.content_type).to match("json")
+      expect(last_response.body).to match(/\{\"group\":\"well\",\"id\":\"\w+\",\"left\":414,\"text\":\"some_text\",\"top\":141\}/)
     end
 
     it "should return a 404 NOT_FOUND when GET a post-it that do not exist" do
@@ -87,7 +87,7 @@ describe "The EasyRetro app", :type => :api do
 
       get "/board/theBoard/post_it/123", :format => :json
 
-      last_response.status.should == 404
+      expect(last_response.status).to eq(404)
     end
 
     it "should update a post-it when PUT to the a board's post-its using id" do
@@ -95,21 +95,21 @@ describe "The EasyRetro app", :type => :api do
       Board.create :name => "theBoard", :post_its => [post_it]
 
       put "/board/theBoard/post_it/#{post_it.id}",
-      params = { 'post_it' => {'text' => "some text", 'top' => 50, 'left' => 120, 'group' => 'well' }},
+      { 'post_it' => {'text' => "some text", 'top' => 50, 'left' => 120, 'group' => 'well' }},
       :format => :json
 
-      last_response.status.should == 200
-      last_response.content_type.should match "json"
-      last_response.body.should =~ /\{\"group\":\"well\",\"id\":\"#{post_it.id}\",\"left\":120,\"text\":\"some text\",\"top\":50\}/
+      expect(last_response.status).to eq(200)
+      expect(last_response.content_type).to match("json")
+      expect(last_response.body).to match(/\{\"group\":\"well\",\"id\":\"#{post_it.id}\",\"left\":120,\"text\":\"some text\",\"top\":50\}/)
 
       board = Board.find_by_name("theBoard")
-      board.should have(1).post_it
+      expect(board.post_its.size).to eq(1)
 
       post_it = board.post_its.first
-      post_it.text.should == "some text"
-      post_it.top.should == 50
-      post_it.left.should == 120
-      post_it.group.should == "well"
+      expect(post_it.text).to eq("some text")
+      expect(post_it.top).to eq(50)
+      expect(post_it.left).to eq(120)
+      expect(post_it.group).to eq("well")
     end
 
     it "should return a 404 NOT_FOUND when updating PUT a the post-it that does not exist" do
@@ -117,7 +117,7 @@ describe "The EasyRetro app", :type => :api do
 
       put "/board/theBoard/post_it/123", :format => :json
 
-      last_response.status.should == 404
+      expect(last_response.status).to eq(404)
     end
 
     it "should delete a existing post-it and return a json representation when DELETE by id" do
@@ -126,13 +126,13 @@ describe "The EasyRetro app", :type => :api do
 
       delete "/board/theBoard/post_it/#{post_it.id}", :format => :json
 
-      last_response.status.should == 200
-      last_response.content_type.should match "json"
-      last_response.body.should =~ /\{\"group\":\"well\",\"id\":\"\w+\",\"left\":414,\"text\":\"some_text\",\"top\":141\}/
+      expect(last_response.status).to eq(200)
+      expect(last_response.content_type).to match("json")
+      expect(last_response.body).to match(/\{\"group\":\"well\",\"id\":\"\w+\",\"left\":414,\"text\":\"some_text\",\"top\":141\}/)
 
       board = Board.find_by_name("theBoard")
-      board.should have(0).post_its
-      board.post_its.find(post_it.id).should_not be
+      expect(board.post_its.size).to eq(0)
+      expect(board.post_its.find(post_it.id)).to_not be
     end
 
     it "should return a 404 NOT_FOUND when the post-it to delete does not exist" do
@@ -140,7 +140,7 @@ describe "The EasyRetro app", :type => :api do
 
       delete "/board/theBoard/post_it/123", :format => :json
 
-      last_response.status.should == 404
+      expect(last_response.status).to eq(404)
     end
   end
 end
