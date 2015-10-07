@@ -16,6 +16,7 @@ gem 'bson_ext'
 
 gem 'heroku'
 gem 'foreman'
+gem 'thin'
 
 group :development do
   gem 'sinatra-reloader'
